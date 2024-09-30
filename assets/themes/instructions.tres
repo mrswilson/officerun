@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bjjwvp1ruslmy"]
+
+[ext_resource type="FontFile" uid="uid://f4tn4vbsiiyu" path="res://assets/fonts/DePixelKlein.ttf" id="1_ktu8q"]
+
+[resource]
+font = ExtResource("1_ktu8q")
+font_size = 12
+font_color = Color(0.113725, 0.113725, 0.113725, 1)
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shadow_size = 0
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(0, 0)

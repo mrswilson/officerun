@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xvq8thaco7qn"]
+
+[ext_resource type="Script" path="res://game/logic/klo/klo.gd" id="1_qah3k"]
+
+[node name="klo" type="Area2D" groups=["minimap_objects"]]
+script = ExtResource("1_qah3k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

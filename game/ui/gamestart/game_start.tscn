@@ -1,0 +1,142 @@
+[gd_scene load_steps=7 format=3 uid="uid://cg5lbbs26legp"]
+
+[ext_resource type="Script" path="res://game/ui/gamestart/game_start.gd" id="1_gaelx"]
+[ext_resource type="Texture2D" uid="uid://cdws0ye30irug" path="res://assets/backgrounds/Green.png" id="2_ym5gk"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="3_gcpum"]
+[ext_resource type="LabelSettings" uid="uid://br1rrf17bl5eg" path="res://assets/themes/font_mainscreen_klein.tres" id="4_iju1f"]
+[ext_resource type="PackedScene" uid="uid://cmlmsxh6bpeik" path="res://game/ui/gameover/letter_label.tscn" id="5_ehs1q"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="6_oir0i"]
+
+[node name="GameStart" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gaelx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_ym5gk")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 76
+
+[node name="Label" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Label"]
+layout_mode = 2
+
+[node name="titleLabel" type="Label" parent="MarginContainer/VBoxContainer/Label/VBoxContainer"]
+layout_mode = 2
+text = "Ready Player One"
+label_settings = ExtResource("3_gcpum")
+horizontal_alignment = 1
+
+[node name="enterName" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/enterName"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="subtitleLabel" type="Label" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "New Highscore!"
+label_settings = ExtResource("4_iju1f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer"]
+layout_mode = 2
+text = "Enter your Name:"
+label_settings = ExtResource("4_iju1f")
+
+[node name="letters" type="HBoxContainer" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="letter_1" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer/letters" instance=ExtResource("5_ehs1q")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../HBoxContainer/PlayButton")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../letter_2")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../letter_2")
+focus_previous = NodePath("../../../../HBoxContainer/PlayButton")
+
+[node name="letter_2" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer/letters" instance=ExtResource("5_ehs1q")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../letter_1")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../letter_3")
+focus_neighbor_bottom = NodePath(".")
+
+[node name="letter_3" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer/letters" instance=ExtResource("5_ehs1q")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../letter_2")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../../../HBoxContainer/PlayButton")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../../../HBoxContainer/PlayButton")
+focus_previous = NodePath("../letter_2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="backButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../../enterName/VBoxContainer/letters/letter_1")
+focus_neighbor_top = NodePath("../../enterName/VBoxContainer/letters/letter_1")
+focus_neighbor_right = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+theme = ExtResource("6_oir0i")
+text = "MENU_LABEL_RETURN_MAIN"
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../backButton")
+focus_neighbor_top = NodePath("../../enterName/VBoxContainer/letters/letter_1")
+focus_neighbor_right = NodePath("../../enterName/VBoxContainer/letters/letter_1")
+focus_neighbor_bottom = NodePath("../backButton")
+focus_next = NodePath("../../enterName/VBoxContainer/letters/letter_1")
+focus_previous = NodePath("../backButton")
+theme = ExtResource("6_oir0i")
+text = "MENU_LABEL_PLAY"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/backButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

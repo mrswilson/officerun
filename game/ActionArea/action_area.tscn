@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://bka7dfnqg1jy8"]
+
+[ext_resource type="Script" path="res://game/ActionArea/action_area.gd" id="1_s0tku"]
+
+[sub_resource type="Animation" id="Animation_4828s"]
+resource_name = "blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.811765, 0.596078, 0.0862745, 0.658824), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aihga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w8ae"]
+_data = {
+"RESET": SubResource("Animation_aihga"),
+"blink": SubResource("Animation_4828s")
+}
+
+[node name="actionArea" type="Polygon2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(-640, 448)
+scale = Vector2(0.999462, 0.999074)
+color = Color(0.741176, 0.282353, 0.101961, 0.662745)
+polygon = PackedVector2Array(928.5, -672.623, 1216.65, -672.623, 1216.65, -512.475, 928.5, -512.474)
+script = ExtResource("1_s0tku")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="blinkAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4w8ae")
+}
+
+[node name="areaTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]
+[connection signal="timeout" from="areaTimer" to="." method="_on_area_timer_timeout"]

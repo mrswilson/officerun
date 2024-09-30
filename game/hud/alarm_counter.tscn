@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjg2tvyy8v803"]
+
+[ext_resource type="Script" path="res://game/hud/alarm_counter.gd" id="1_8xe3r"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="1_47dca"]
+[ext_resource type="Texture2D" uid="uid://ccc52sul5e5jm" path="res://assets/ui/icon_server.png" id="3_26avv"]
+[ext_resource type="FontFile" uid="uid://bt6dnw25njfrt" path="res://assets/fonts/retro-pixel-petty-5h.ttf" id="4_2841a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ix1q"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_axj83"]
+font = ExtResource("4_2841a")
+font_size = 10
+shadow_size = 0
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(0, 0)
+
+[node name="AlarmCounter" type="PanelContainer"]
+modulate = Color(0.938879, 0.941406, 0.617911, 1)
+custom_minimum_size = Vector2(145, 25)
+offset_right = 80.0
+offset_bottom = 25.0
+theme = ExtResource("1_47dca")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ix1q")
+script = ExtResource("1_8xe3r")
+
+[node name="HB" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="icon" type="TextureRect" parent="HB"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("3_26avv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HB"]
+modulate = Color(0.0941176, 0.0941176, 0.0941176, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_47dca")
+text = "Serverausfall"
+label_settings = SubResource("LabelSettings_axj83")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="damageTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="damageTimer" to="." method="_on_damage_timer_timeout"]

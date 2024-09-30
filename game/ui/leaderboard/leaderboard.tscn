@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlhb6ospoeaj7"]
+
+[ext_resource type="Script" path="res://game/ui/leaderboard/leaderboard.gd" id="1_od4hc"]
+[ext_resource type="Texture2D" uid="uid://c4yqym6kmtiip" path="res://assets/backgrounds/Yellow.png" id="2_ynf6f"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="3_33fj3"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="4_gkn8t"]
+[ext_resource type="LabelSettings" uid="uid://hc1trj8vksuw" path="res://game/ui/highscore_entry_bold.tres" id="5_3qb73"]
+[ext_resource type="FontFile" uid="uid://c1amsa7eqluks" path="res://assets/fonts/AvenuePixel-Regular.ttf" id="6_3jlqn"]
+
+[node name="Leaderboard" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_od4hc")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_ynf6f")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Highscores"
+label_settings = ExtResource("3_33fj3")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 16
+
+[node name="list" type="VBoxContainer" parent="MarginContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 22
+
+[node name="HB" type="HBoxContainer" parent="MarginContainer/HBoxContainer2/MarginContainer/list"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="labelRank" type="Label" parent="MarginContainer/HBoxContainer2/MarginContainer/list/HB"]
+layout_mode = 2
+theme = ExtResource("4_gkn8t")
+theme_override_font_sizes/font_size = 1
+text = "CONTEXT_ITEM_RANK_NOUN"
+label_settings = ExtResource("5_3qb73")
+
+[node name="labelName" type="Label" parent="MarginContainer/HBoxContainer2/MarginContainer/list/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("6_3jlqn")
+theme_override_font_sizes/font_size = 11
+text = "MENU_NAME"
+label_settings = ExtResource("5_3qb73")
+
+[node name="labelScore" type="Label" parent="MarginContainer/HBoxContainer2/MarginContainer/list/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("6_3jlqn")
+theme_override_font_sizes/font_size = 11
+text = "GAME_OBJECTIVE_SCORE"
+label_settings = ExtResource("5_3qb73")
+horizontal_alignment = 1
+
+[node name="labelLevel" type="Label" parent="MarginContainer/HBoxContainer2/MarginContainer/list/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_fonts/font = ExtResource("6_3jlqn")
+theme_override_font_sizes/font_size = 11
+text = "MENU_LABEL_LEVEL"
+label_settings = ExtResource("5_3qb73")
+horizontal_alignment = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer2/MarginContainer/list"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("4_gkn8t")
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+text = "MENU_LABEL_CLOSE"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]

@@ -1,0 +1,237 @@
+[gd_scene load_steps=7 format=3 uid="uid://dclksevb36yuk"]
+
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="1_qn2ww"]
+[ext_resource type="Script" path="res://game/ui/options.gd" id="2_jeuce"]
+[ext_resource type="Texture2D" uid="uid://c4yqym6kmtiip" path="res://assets/backgrounds/Yellow.png" id="3_or1bv"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="4_musv3"]
+[ext_resource type="FontFile" uid="uid://cftcm5fy1fwcg" path="res://assets/fonts/Retro Gaming.ttf" id="5_c6x6d"]
+[ext_resource type="FontFile" uid="uid://dxbj0fmabafpp" path="res://assets/fonts/ARCADECLASSIC.TTF" id="5_jsb3f"]
+
+[node name="options" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qn2ww")
+script = ExtResource("2_jeuce")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("3_or1bv")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "MENU_OPTIONS"
+label_settings = ExtResource("4_musv3")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MC/VB"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="HBLanguage" type="HBoxContainer" parent="MC/VB/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+theme_override_constants/separation = 16
+
+[node name="language" type="Label" parent="MC/VB/VBoxContainer/HBLanguage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_qn2ww")
+theme_override_fonts/font = ExtResource("5_c6x6d")
+theme_override_font_sizes/font_size = 12
+text = "MENU_LABEL_LANGUAGE"
+
+[node name="langButton" type="OptionButton" parent="MC/VB/VBoxContainer/HBLanguage"]
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+
+[node name="VBSoundOptions" type="VBoxContainer" parent="MC/VB/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBSound" type="HBoxContainer" parent="MC/VB/VBoxContainer/VBSoundOptions"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+theme_override_constants/separation = 16
+
+[node name="soundLabel" type="Label" parent="MC/VB/VBoxContainer/VBSoundOptions/HBSound"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_qn2ww")
+theme_override_fonts/font = ExtResource("5_jsb3f")
+text = "MENU_LABEL_SOUND"
+
+[node name="cbSound" type="CheckBox" parent="MC/VB/VBoxContainer/VBSoundOptions/HBSound"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_qn2ww")
+button_pressed = true
+icon_alignment = 2
+
+[node name="HBSoundVolume" type="HBoxContainer" parent="MC/VB/VBoxContainer/VBSoundOptions"]
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+theme_override_constants/separation = 16
+
+[node name="soundVolumeLabel" type="Label" parent="MC/VB/VBoxContainer/VBSoundOptions/HBSoundVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_qn2ww")
+theme_override_fonts/font = ExtResource("5_c6x6d")
+theme_override_font_sizes/font_size = 12
+text = "MENU_OPTIONS_SOUND_VOLUME"
+
+[node name="soundVolumeSlider" type="HSlider" parent="MC/VB/VBoxContainer/VBSoundOptions/HBSoundVolume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_qn2ww")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="VBSSFXOptions" type="VBoxContainer" parent="MC/VB/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBSFX" type="HBoxContainer" parent="MC/VB/VBoxContainer/VBSSFXOptions"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+theme_override_constants/separation = 16
+
+[node name="sfx" type="Label" parent="MC/VB/VBoxContainer/VBSSFXOptions/HBSFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_qn2ww")
+theme_override_fonts/font = ExtResource("5_jsb3f")
+text = "MENU_LABEL_SFX"
+
+[node name="cbSFX" type="CheckBox" parent="MC/VB/VBoxContainer/VBSSFXOptions/HBSFX"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_qn2ww")
+button_pressed = true
+
+[node name="HBSFXVolume" type="HBoxContainer" parent="MC/VB/VBoxContainer/VBSSFXOptions"]
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+theme_override_constants/separation = 16
+
+[node name="SFXVolumeLabel" type="Label" parent="MC/VB/VBoxContainer/VBSSFXOptions/HBSFXVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_qn2ww")
+theme_override_fonts/font = ExtResource("5_c6x6d")
+theme_override_font_sizes/font_size = 12
+text = "MENU_OPTIONS_SFX_VOLUME"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="MC/VB/VBoxContainer/VBSSFXOptions/HBSFXVolume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="VBMusicOptions" type="VBoxContainer" parent="MC/VB/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBMusic" type="HBoxContainer" parent="MC/VB/VBoxContainer/VBMusicOptions"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+theme_override_constants/separation = 16
+
+[node name="language" type="Label" parent="MC/VB/VBoxContainer/VBMusicOptions/HBMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_qn2ww")
+theme_override_fonts/font = ExtResource("5_jsb3f")
+text = "MENU_LABEL_MUSIC"
+
+[node name="cbMusic" type="CheckBox" parent="MC/VB/VBoxContainer/VBMusicOptions/HBMusic"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_qn2ww")
+button_pressed = true
+
+[node name="HBMusicVolume" type="HBoxContainer" parent="MC/VB/VBoxContainer/VBMusicOptions"]
+layout_mode = 2
+theme = ExtResource("1_qn2ww")
+theme_override_constants/separation = 16
+
+[node name="musicVolumeLabel" type="Label" parent="MC/VB/VBoxContainer/VBMusicOptions/HBMusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_qn2ww")
+theme_override_fonts/font = ExtResource("5_c6x6d")
+theme_override_font_sizes/font_size = 12
+text = "MENU_OPTIONS_MUSIC_VOLUME"
+
+[node name="musicVolumeSlider" type="HSlider" parent="MC/VB/VBoxContainer/VBMusicOptions/HBMusicVolume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="CloseButton" type="Button" parent="MC/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme = ExtResource("1_qn2ww")
+text = "MENU_LABEL_OK"
+
+[connection signal="item_selected" from="MC/VB/VBoxContainer/HBLanguage/langButton" to="." method="_on_option_button_item_selected"]
+[connection signal="value_changed" from="MC/VB/VBoxContainer/VBSoundOptions/HBSoundVolume/soundVolumeSlider" to="." method="_on_sound_volume_slider_value_changed"]
+[connection signal="value_changed" from="MC/VB/VBoxContainer/VBSSFXOptions/HBSFXVolume/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="toggled" from="MC/VB/VBoxContainer/VBMusicOptions/HBMusic/cbMusic" to="." method="_on_cb_music_toggled"]
+[connection signal="value_changed" from="MC/VB/VBoxContainer/VBMusicOptions/HBMusicVolume/musicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="pressed" from="MC/VB/CloseButton" to="." method="_on_close_button_pressed"]

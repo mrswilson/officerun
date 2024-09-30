@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://duicnvcdybtl5"]
+
+[ext_resource type="PackedScene" uid="uid://caqmnilwu43bs" path="res://game/levels/level_base.tscn" id="1_bb24u"]
+[ext_resource type="PackedScene" uid="uid://ds0aweury24fe" path="res://game/Bugs/bug_3.tscn" id="2_jhrj3"]
+[ext_resource type="PackedScene" uid="uid://caw18ogoys16i" path="res://game/hotspots/phone.tscn" id="3_o3wjp"]
+[ext_resource type="PackedScene" uid="uid://c4l0kg46dbt8y" path="res://game/hotspots/server.tscn" id="3_sq82m"]
+
+[sub_resource type="Curve2D" id="Curve2D_64rqf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 406, 170, 0, 0, 0, 0, 471, 257, 0, 0, 0, 0, 442, 306, 0, 0, 0, 0, 311, 286, 0, 0, 0, 0, 382, 222, 0, 0, 0, 0, 562, 352)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk7w5"]
+size = Vector2(123.5, 122.5)
+
+[node name="LevelBase" instance=ExtResource("1_bb24u")]
+duration = 120
+
+[node name="level" parent="." index="0"]
+rendering_quadrant_size = 16
+layer_1/tile_data = PackedInt32Array(589840, 786432, 21, 655376, 786432, 22, 786448, 786432, 24, 786449, 851968, 24, 589843, 983040, 21, 655379, 983040, 22, 786451, 983040, 24, 720913, 851968, 22, 589841, 851968, 21)
+layer_4/tile_data = PackedInt32Array(327695, 393217, 7, 393234, 393217, 10, 327701, 393217, 12)
+
+[node name="BugSpawner" parent="Bugs" index="0" node_paths=PackedStringArray("paths")]
+active = false
+paths = [NodePath("../path_1")]
+
+[node name="path_1" type="Path2D" parent="Bugs" index="1"]
+visible = false
+position = Vector2(11, -5)
+curve = SubResource("Curve2D_64rqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bugs/BugfixArea" index="0"]
+z_index = -1
+position = Vector2(576.25, 351.75)
+shape = SubResource("RectangleShape2D_qk7w5")
+
+[node name="Bug_3" parent="Bugs" index="3" node_paths=PackedStringArray("waypoints") instance=ExtResource("2_jhrj3")]
+z_index = 1
+position = Vector2(256, 155)
+speed = 75
+waypoints = [NodePath("../waypoints/Marker2D"), NodePath("../waypoints/Marker2D2"), NodePath("../waypoints/Marker2D3"), NodePath("../waypoints/Marker2D4"), NodePath("../waypoints/Marker2D5"), NodePath("../waypoints/Marker2D6"), NodePath("../../Exit")]
+
+[node name="waypoints" type="Node" parent="Bugs" index="4"]
+
+[node name="Marker2D" type="Marker2D" parent="Bugs/waypoints" index="0"]
+position = Vector2(750, 406)
+
+[node name="Marker2D2" type="Marker2D" parent="Bugs/waypoints" index="1"]
+position = Vector2(731, 151)
+
+[node name="Marker2D3" type="Marker2D" parent="Bugs/waypoints" index="2"]
+position = Vector2(571, 256)
+
+[node name="Marker2D4" type="Marker2D" parent="Bugs/waypoints" index="3"]
+position = Vector2(254, 426)
+
+[node name="Marker2D5" type="Marker2D" parent="Bugs/waypoints" index="4"]
+position = Vector2(131, 263)
+
+[node name="Marker2D6" type="Marker2D" parent="Bugs/waypoints" index="5"]
+position = Vector2(314, 178)
+
+[node name="Player" parent="." index="3"]
+position = Vector2(394, 260)
+
+[node name="LevelTimer" parent="." index="4"]
+autostart = false
+
+[node name="Hotspot2" parent="." index="6" instance=ExtResource("3_o3wjp")]
+position = Vector2(257, 284)
+
+[node name="Server" parent="." index="7" instance=ExtResource("3_sq82m")]
+position = Vector2(417, 119)
+
+[node name="Exit" parent="." index="8"]
+position = Vector2(573, 352)

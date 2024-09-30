@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://cstb7wl1md3pf"]
+
+[ext_resource type="PackedScene" uid="uid://caqmnilwu43bs" path="res://game/levels/level_base.tscn" id="1_bb24u"]
+[ext_resource type="PackedScene" uid="uid://dopmg8b6wbcv5" path="res://game/Bugs/bug_spawner.tscn" id="2_lsc01"]
+[ext_resource type="LabelSettings" uid="uid://d257haldggbwj" path="res://assets/themes/fliesstext_intranet.tres" id="4_s5emq"]
+[ext_resource type="Texture2D" uid="uid://d7ixgc2u3gbg" path="res://assets/bug/8 - Roach_Running (32 x 32).png" id="4_wsu51"]
+[ext_resource type="Texture2D" uid="uid://c03nkkqwh4lbx" path="res://assets/ui/escalation_singles_32.png" id="6_goqn6"]
+
+[node name="Level_1" instance=ExtResource("1_bb24u")]
+has_vbs = false
+
+[node name="BugSpawner" parent="Room/Bugs" index="0"]
+position = Vector2(77, -552)
+max_waypoints_for_bugs = 1
+
+[node name="BugSpawner2" parent="Room/Bugs" index="1" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("2_lsc01")]
+position = Vector2(1337, -523)
+speed = 50.0
+max_waypoints_for_bugs = 1
+waypointsNode = NodePath("../waypoints")
+exit = NodePath("../Exit")
+
+[node name="BugSpawner3" parent="Room/Bugs" index="2" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("2_lsc01")]
+position = Vector2(701, -72)
+interval_min = 1
+interval_max = 2
+speed = 50.0
+max_waypoints_for_bugs = 0
+waypointsNode = NodePath("../waypoints")
+exit = NodePath("../Exit")
+
+[node name="Marker2D" type="Marker2D" parent="Room/Bugs/waypoints" index="0"]
+position = Vector2(464, -559)
+
+[node name="Marker2D2" type="Marker2D" parent="Room/Bugs/waypoints" index="1"]
+position = Vector2(1108, -120)
+
+[node name="Marker2D3" type="Marker2D" parent="Room/Bugs/waypoints" index="2"]
+position = Vector2(-201, -398)
+
+[node name="Marker2D4" type="Marker2D" parent="Room/Bugs/waypoints" index="3"]
+position = Vector2(87, -96)
+
+[node name="Marker2D5" type="Marker2D" parent="Room/Bugs/waypoints" index="4"]
+position = Vector2(-214, -485)
+
+[node name="Marker2D6" type="Marker2D" parent="Room/Bugs/waypoints" index="5"]
+position = Vector2(907, -631)
+
+[node name="Marker2D7" type="Marker2D" parent="Room/Bugs/waypoints" index="6"]
+position = Vector2(1266, -616)
+
+[node name="BugfixArea" parent="Room/Meeting" index="0"]
+z_index = 1
+collision_layer = 32
+
+[node name="CollisionShape2D" parent="Room/Meeting/BugfixArea" index="0"]
+z_index = 1
+
+[node name="Player" parent="Room" index="6"]
+position = Vector2(765, -109)
+
+[node name="Minimap" parent="UI Overlay" index="2"]
+show_map = false
+
+[node name="Instructions" parent="UI Overlay" index="3"]
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="TitleLabel" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="2"]
+text = "LEVEL_1_TITLE"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI Overlay/Instructions/Panel/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer3" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer3/Control" index="0"]
+texture = ExtResource("4_wsu51")
+offset = Vector2(10, -8)
+hframes = 2
+
+[node name="Label" type="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer3" index="1"]
+layout_mode = 2
+text = "LEVEL_1_INSTRUCTION_1"
+label_settings = ExtResource("4_s5emq")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UI Overlay/Instructions/Panel/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer4" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer4/Control" index="0"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_goqn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer4/Control" index="1"]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_goqn6")
+hframes = 2
+
+[node name="Label" type="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer4" index="1"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+text = "LEVEL_1_INSTRUCTION_2"
+label_settings = ExtResource("4_s5emq")
+autowrap_mode = 2
+
+[node name="MeetingPanel" parent="UI Overlay" index="5"]
+visible = false

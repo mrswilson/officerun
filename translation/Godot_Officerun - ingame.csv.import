@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dvuuc0old5btf"
+
+[deps]
+
+files=["res://translation/Godot_Officerun - ingame.en.translation", "res://translation/Godot_Officerun - ingame.de.translation", "res://translation/Godot_Officerun - ingame.fr.translation", "res://translation/Godot_Officerun - ingame.es.translation", "res://translation/Godot_Officerun - ingame.it.translation"]
+
+source_file="res://translation/Godot_Officerun - ingame.csv"
+dest_files=["res://translation/Godot_Officerun - ingame.en.translation", "res://translation/Godot_Officerun - ingame.de.translation", "res://translation/Godot_Officerun - ingame.fr.translation", "res://translation/Godot_Officerun - ingame.es.translation", "res://translation/Godot_Officerun - ingame.it.translation"]
+
+[params]
+
+compress=true
+delimiter=0

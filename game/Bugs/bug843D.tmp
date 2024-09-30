@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgl0lmjevx3t2"]
+
+[ext_resource type="Texture2D" uid="uid://d7ixgc2u3gbg" path="res://assets/enemies/8 - Roach_Running (32 x 32).png" id="1_8t0ci"]
+[ext_resource type="Script" path="res://game/NPC/bug.gd" id="1_p55f7"]
+[ext_resource type="Texture2D" uid="uid://c7srbl3xuvjji" path="res://assets/items/circle_42_weiss.png" id="2_ercg4"]
+[ext_resource type="PackedScene" uid="uid://ciq23guq02vxj" path="res://game/logic/interaction/interaction_area.tscn" id="4_5w2vr"]
+
+[sub_resource type="Animation" id="Animation_xw0yl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction/circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g3n5r"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction/circle:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(2, -2, -2, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05t7a"]
+_data = {
+"RESET": SubResource("Animation_xw0yl"),
+"blink": SubResource("Animation_g3n5r")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brx6q"]
+radius = 21.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55c1s"]
+atlas = ExtResource("1_8t0ci")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7pqi"]
+atlas = ExtResource("1_8t0ci")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wduyk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55c1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7pqi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6gth"]
+size = Vector2(19, 9)
+
+[node name="Bug" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_p55f7")
+
+[node name="Interaction" type="Node2D" parent="."]
+
+[node name="circle_animation" type="AnimationPlayer" parent="Interaction"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_05t7a")
+}
+
+[node name="circle" type="Sprite2D" parent="Interaction"]
+self_modulate = Color(0.196078, 0.564706, 0.658824, 1)
+y_sort_enabled = true
+position = Vector2(0, -9)
+texture = ExtResource("2_ercg4")
+
+[node name="InteractionArea" parent="Interaction" instance=ExtResource("4_5w2vr")]
+action_name = "debug"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/InteractionArea"]
+visible = false
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_brx6q")
+
+[node name="roach" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_wduyk")
+autoplay = "default"
+frame_progress = 0.0162183
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, -4.5)
+shape = SubResource("RectangleShape2D_o6gth")

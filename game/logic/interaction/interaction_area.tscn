@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciq23guq02vxj"]
+
+[ext_resource type="Script" path="res://game/logic/interaction/interaction_area.gd" id="1_y22kw"]
+
+[node name="InteractionArea" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_y22kw")
+
+[node name="visibleCollisionShape" type="Node2D" parent="."]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://ut5nyvkd0cy5"]
+
+[ext_resource type="PackedScene" uid="uid://cmh6vieeaqh18" path="res://game/hotspots/hotspot.tscn" id="1_e0frw"]
+[ext_resource type="Script" path="res://game/hotspots/barrel.gd" id="2_oslc3"]
+[ext_resource type="Texture2D" uid="uid://be6lfh8tbx763" path="res://assets/items/Barrel/Hit/1.png" id="4_benq2"]
+[ext_resource type="PackedScene" uid="uid://dopmg8b6wbcv5" path="res://game/Bugs/bug_spawner.tscn" id="5_6e07v"]
+[ext_resource type="Texture2D" uid="uid://ct23aagkomc0o" path="res://assets/items/Barrel/Hit/2.png" id="5_f6ld8"]
+[ext_resource type="Texture2D" uid="uid://csyac50kaljs" path="res://assets/items/Barrel/Hit/3.png" id="6_05da1"]
+[ext_resource type="Texture2D" uid="uid://d10qwp1rea8e8" path="res://assets/items/Barrel/Hit/4.png" id="7_qavx0"]
+[ext_resource type="Texture2D" uid="uid://c00rjeh5jnypb" path="res://assets/items/Barrel/ME_Singles_City_Props_32x32_Barrel_1.png" id="8_2v5ro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynhb4"]
+atlas = ExtResource("8_2v5ro")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jr4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_benq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f6ld8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_05da1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qavx0")
+}],
+"loop": false,
+"name": &"bang",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynhb4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Barrel" instance=ExtResource("1_e0frw")]
+script = ExtResource("2_oslc3")
+hasAlarm = false
+damage_after = 0
+damage_points = 0
+pause_during_meeting = false
+show_alarm_marker = false
+
+[node name="barrelSprite" type="AnimatedSprite2D" parent="." index="1"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -23)
+sprite_frames = SubResource("SpriteFrames_1jr4u")
+animation = &"idle"
+offset = Vector2(0, -13)
+
+[node name="InteractionArea" parent="." index="3"]
+action_name = "interact"
+
+[node name="IA_Collision" parent="InteractionArea" index="0"]
+position = Vector2(-0.5, 27)
+
+[node name="collisionMarker" parent="InteractionArea" index="1"]
+visible = true
+modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(0, 21)
+
+[node name="Bugs" type="Node2D" parent="." index="7"]
+
+[node name="BugSpawner" parent="Bugs" index="0" instance=ExtResource("5_6e07v")]
+active = false
+interval_min = 0
+interval_max = 1
+speed = 100.0
+max_waypoints_for_bugs = 0
+
+[node name="bugTimer" type="Timer" parent="Bugs" index="1"]
+wait_time = 10.0
+
+[connection signal="animation_finished" from="barrelSprite" to="." method="_on_barrel_sprite_animation_finished"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="Bugs/bugTimer" to="." method="_on_bug_timer_timeout"]

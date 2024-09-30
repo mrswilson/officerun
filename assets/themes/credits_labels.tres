@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://clo232ga6823p"]
+
+[ext_resource type="FontFile" uid="uid://wh0sqeshpxd5" path="res://assets/fonts/Covenant5x5.ttf" id="1_mvqfa"]
+
+[resource]
+font = ExtResource("1_mvqfa")
+font_size = 20
+font_color = Color(0.815686, 0.360784, 0.294118, 1)
+outline_size = 6
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shadow_size = 0
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(0, 0)

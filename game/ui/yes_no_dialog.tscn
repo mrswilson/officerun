@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bssxy4hwpogc7"]
+
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="1_cj10n"]
+[ext_resource type="Script" path="res://game/ui/yes_no_dialog.gd" id="1_wq4rb"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="2_rjrdx"]
+
+[node name="YesNoDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wq4rb")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -43.0
+offset_right = 183.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cj10n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_QUIT"
+label_settings = ExtResource("2_rjrdx")
+
+[node name="messageLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_QUIT_CONFIRM"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="YesButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_YEAH"
+
+[node name="NoButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_NOPE"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

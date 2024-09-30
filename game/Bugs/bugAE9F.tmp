@@ -1,0 +1,287 @@
+[gd_scene load_steps=13 format=3 uid="uid://ds0aweury24fe"]
+
+[ext_resource type="Texture2D" uid="uid://d7ixgc2u3gbg" path="res://assets/bug/8 - Roach_Running (32 x 32).png" id="1_8t0ci"]
+[ext_resource type="Texture2D" uid="uid://owa7lngt6dlt" path="res://assets/ui/circle_42.png" id="2_pq0wf"]
+[ext_resource type="PackedScene" uid="uid://ciq23guq02vxj" path="res://game/logic/interaction/interaction_area.tscn" id="3_q2ytp"]
+
+[sub_resource type="GDScript" id="GDScript_740no"]
+script/source = "extends CharacterBody2D
+
+@onready var nav_agent := $Navigation/NavigationAgent2D as NavigationAgent2D
+@onready var circle_animation = $Interaction/circle_animation
+@onready var interaction_area = $Interaction/InteractionArea
+@onready var circle = $Interaction/circle
+
+@onready var label_animation = $Node2D/labelAnimation
+@onready var points_label = $Node2D/pointsLabel
+
+@onready var roach = $roach
+@onready var animation_player = $AnimationPlayer
+
+@export var points:int = 5
+@export var speed:int = 20
+@export var waypoints : Array[Marker2D]
+
+var cur_goal_index:int = 0
+var max_goals:int = 2
+var no_of_goals = 1
+var selected_goals = []
+
+var points_hotfix = 5*points
+var _speed = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	interaction_area.interact = Callable(self, \"_pick\")
+	SignalManager.interaction_area_entered.connect(_interaction_area_entered)
+	SignalManager.interaction_area_exit.connect(_interaction_area_exit)
+	SignalManager.on_game_over.connect(_on_game_over)
+	SignalManager.level_completed.connect(_on_level_complete)
+	animation_player.play(\"run\")
+	circle.visible = false
+	'''
+	set_physics_process(false)
+	await get_tree().physics_frame
+	set_physics_process(true)
+	
+	no_of_goals = randi_range(1, max_goals)
+	no_of_goals = 3
+	var exit = waypoints.pop_back()
+	waypoints.shuffle()
+	for i in no_of_goals-1:
+		var wp = waypoints[i]
+		print(wp)
+		selected_goals.append(wp)
+		# waypoints.pick_random()
+	selected_goals.append(waypoints[waypoints.size()-1])
+	selected_goals.append(exit)
+	
+	for w in selected_goals:
+		print(w)
+	make_path()
+	'''
+
+
+func set_waypoints(waypoints:Array[Marker2D]):
+	no_of_goals = randi_range(1, max_goals)
+	no_of_goals = 3
+	var exit = waypoints.pop_back()
+	waypoints.shuffle()
+	for i in no_of_goals-1:
+		var wp = waypoints[i]
+		print(wp)
+		selected_goals.append(wp)
+		# waypoints.pick_random()
+	selected_goals.append(waypoints[waypoints.size()-1])
+	selected_goals.append(exit)
+	
+	for w in selected_goals:
+		print(w)
+	make_path()
+
+
+func _physics_process(_delta:float):
+	var dir = to_local(nav_agent.get_next_path_position()).normalized()
+	velocity = dir * speed
+	move_and_slide()
+
+
+func set_speed(speed:int):
+	self._speed = speed
+
+
+func get_speed():
+	return self._speed
+
+
+func _stop_moving():
+	print(\"stop moving\")
+	set_physics_process(false)
+	_speed = 0
+	roach.stop()
+
+
+func _pick():
+	self._speed = 0
+	SignalManager.pickup_bug.emit(points)
+	points_label.text = str(points)
+	label_animation.play(\"popup\")
+	await get_tree().create_timer(0.5).timeout
+	get_parent().queue_free()
+
+
+func _blink(blink:bool):
+	circle.visible = blink
+	if blink:
+		circle_animation.play(\"blink\")
+
+
+func make_path():
+	nav_agent.target_position = selected_goals[cur_goal_index].global_position
+
+
+# ====================================================
+# Signals
+# ====================================================
+
+func _on_game_over():
+	set_physics_process(false)
+
+
+func _on_level_complete():
+	_stop_moving()
+
+
+func _interaction_area_entered(area):
+	if area == interaction_area:
+		_blink(true)
+
+
+func _interaction_area_exit(area):
+	if area == interaction_area:
+		_blink(false)
+
+
+func _on_navigation_agent_2d_navigation_finished():
+	if cur_goal_index == no_of_goals:
+		print(\"last goal reached\")
+		SignalManager.bug_escaped.emit()
+		queue_free()
+	elif cur_goal_index < no_of_goals:
+		print(\"heading for next waypoint (%d)\" % cur_goal_index)
+		cur_goal_index += 1
+		make_path()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_syttd"]
+radius = 8.06226
+
+[sub_resource type="Animation" id="Animation_8o5q7"]
+resource_name = "run"
+length = 0.3
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_kqrd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kh6rg"]
+_data = {
+"RESET": SubResource("Animation_kqrd4"),
+"run": SubResource("Animation_8o5q7")
+}
+
+[sub_resource type="Animation" id="Animation_vsrne"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fdbke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5e46"]
+_data = {
+"RESET": SubResource("Animation_fdbke"),
+"blink": SubResource("Animation_vsrne")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wm1ix"]
+radius = 18.0278
+
+[node name="Bug" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 23
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = SubResource("GDScript_740no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -16)
+texture = ExtResource("1_8t0ci")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_syttd")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="Navigation"]
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+avoidance_enabled = true
+radius = 15.0
+debug_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kh6rg")
+}
+
+[node name="Interaction" type="Node2D" parent="."]
+
+[node name="circle_animation" type="AnimationPlayer" parent="Interaction"]
+libraries = {
+"": SubResource("AnimationLibrary_c5e46")
+}
+
+[node name="circle" type="Sprite2D" parent="Interaction"]
+position = Vector2(0, -9)
+texture = ExtResource("2_pq0wf")
+
+[node name="InteractionArea" parent="Interaction" node_paths=PackedStringArray("markerShape") instance=ExtResource("3_q2ytp")]
+markerShape = NodePath("../circle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/InteractionArea"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_wm1ix")

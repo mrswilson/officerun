@@ -1,0 +1,154 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0mterih1vefx"]
+
+[ext_resource type="Script" path="res://game/meeting/meeting.gd" id="1_oeo8f"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="1_t45v7"]
+[ext_resource type="LabelSettings" uid="uid://0iwaw01taftw" path="res://assets/themes/request_font.tres" id="2_3101j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyxmp"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 2.0
+content_margin_bottom = 20.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 4
+shadow_offset = Vector2(4, 4)
+
+[node name="MeetingPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 508.0
+offset_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_oeo8f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.0941176, 0.0941176, 0.721569)
+
+[node name="Meeting" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 225)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.5
+offset_top = -100.0
+offset_right = 123.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t45v7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hyxmp")
+
+[node name="VB" type="VBoxContainer" parent="Meeting"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Meeting/VB"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_t45v7")
+color = Color(0.913725, 0.67451, 0.129412, 1)
+
+[node name="header" type="HBoxContainer" parent="Meeting/VB/ColorRect"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 232.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_t45v7")
+theme_override_constants/separation = 10
+
+[node name="angenommenLabel" type="Label" parent="Meeting/VB/ColorRect/header"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "angenommen:"
+label_settings = ExtResource("2_3101j")
+vertical_alignment = 2
+
+[node name="angenommenCounterLabel" type="Label" parent="Meeting/VB/ColorRect/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "?"
+label_settings = ExtResource("2_3101j")
+vertical_alignment = 2
+
+[node name="abgelehntLabel" type="Label" parent="Meeting/VB/ColorRect/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "abgelehnt: "
+label_settings = ExtResource("2_3101j")
+vertical_alignment = 2
+
+[node name="abgelehntCounterLabel" type="Label" parent="Meeting/VB/ColorRect/header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "?"
+label_settings = ExtResource("2_3101j")
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Meeting/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Meeting/VB/MarginContainer"]
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="Meeting/VB/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="footer" type="HBoxContainer" parent="Meeting/VB/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PunkteLabel" type="Label" parent="Meeting/VB/MarginContainer/VBoxContainer/footer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Punkte:"
+label_settings = ExtResource("2_3101j")
+vertical_alignment = 2
+
+[node name="PunkteCounterLabel" type="Label" parent="Meeting/VB/MarginContainer/VBoxContainer/footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "??"
+label_settings = ExtResource("2_3101j")
+vertical_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(252, 196)
+bus = &"sfx"
+
+[node name="scoreDelayTimer" type="Timer" parent="."]
+
+[node name="requestTimer" type="Timer" parent="."]
+wait_time = 0.8

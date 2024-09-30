@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhrriki3ilah2"]
+
+[ext_resource type="LabelSettings" uid="uid://bvu8m6q0pmqy3" path="res://assets/themes/highscore_entry.tres" id="1_8mbp7"]
+[ext_resource type="Script" path="res://game/ui/leaderboard/leaderboard_entry.gd" id="1_kufa4"]
+
+[node name="leaderboard_entry" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+script = ExtResource("1_kufa4")
+
+[node name="HB" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="labelRank" type="Label" parent="HB"]
+layout_mode = 2
+text = "1. "
+label_settings = ExtResource("1_8mbp7")
+
+[node name="labelName" type="Label" parent="HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "NIS"
+label_settings = ExtResource("1_8mbp7")
+
+[node name="labelScore" type="Label" parent="HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "1097"
+label_settings = ExtResource("1_8mbp7")
+horizontal_alignment = 2
+
+[node name="labelLevel" type="Label" parent="HB"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "6"
+label_settings = ExtResource("1_8mbp7")
+horizontal_alignment = 2

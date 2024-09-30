@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo72504nx3y24"]
+
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="1_igria"]
+[ext_resource type="StyleBox" uid="uid://b30t2jd32fr7o" path="res://assets/themes/menu_button.tres" id="2_5wn7g"]
+[ext_resource type="StyleBox" uid="uid://b7smbx1ov1jrf" path="res://assets/themes/menu_button_hover.tres" id="3_7mr1j"]
+[ext_resource type="Script" path="res://game/ui/levellist/level_button.gd" id="4_tesyv"]
+
+[node name="LevelButton" type="Button"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 62.0
+offset_bottom = 15.5
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_igria")
+theme_override_colors/font_focus_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("2_5wn7g")
+theme_override_styles/hover = ExtResource("3_7mr1j")
+theme_override_styles/focus = ExtResource("3_7mr1j")
+text = "Level 1"
+script = ExtResource("4_tesyv")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

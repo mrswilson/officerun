@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://caw18ogoys16i"]
+
+[ext_resource type="PackedScene" uid="uid://cmh6vieeaqh18" path="res://game/hotspots/hotspot.tscn" id="1_2nekd"]
+[ext_resource type="Script" path="res://game/hotspots/phone.gd" id="2_41q0k"]
+[ext_resource type="Texture2D" uid="uid://c0hm3hcltbfhq" path="res://assets/ui/icon_phone.png" id="3_43b8c"]
+[ext_resource type="Texture2D" uid="uid://ca6xwqbic06tp" path="res://assets/items/ringing_phone.png" id="3_mydb0"]
+[ext_resource type="AudioStream" uid="uid://iateit0daaou" path="res://assets/sounds/phone.wav" id="4_ewb2j"]
+
+[node name="phone" instance=ExtResource("1_2nekd")]
+collision_mask = 5
+script = ExtResource("2_41q0k")
+alarm_icon = ExtResource("3_43b8c")
+alarm_message = "ALARM_PHONE"
+damage_after = 10
+damage_points = 5
+alarm_sound = ExtResource("4_ewb2j")
+minimap_icon = "phone"
+
+[node name="icon" parent="." index="0"]
+texture = ExtResource("3_mydb0")
+offset = Vector2(0, -11)
+
+[node name="spriteCollision" parent="." index="1"]
+position = Vector2(1.5, -12)
+
+[node name="InteractionArea" parent="." index="2"]
+position = Vector2(0, -9)
+
+[node name="IA_Collision" parent="InteractionArea" index="0"]
+position = Vector2(0, -2)
+
+[node name="collisionMarker" parent="InteractionArea" index="1"]
+visible = true
+position = Vector2(0, -3)

@@ -1,0 +1,326 @@
+[gd_scene load_steps=21 format=3 uid="uid://cfiaidmtyyq6v"]
+
+[ext_resource type="Script" path="res://game/ui/main_screen.gd" id="1_q3hqx"]
+[ext_resource type="Texture2D" uid="uid://cdws0ye30irug" path="res://assets/backgrounds/Green.png" id="2_2btbb"]
+[ext_resource type="Texture2D" uid="uid://bscl7rtbe1tkt" path="res://icon.png" id="2_74iis"]
+[ext_resource type="Texture2D" uid="uid://d7ixgc2u3gbg" path="res://assets/bug/8 - Roach_Running (32 x 32).png" id="3_yyq8q"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="5_xphb2"]
+[ext_resource type="Texture2D" uid="uid://cd7hpockfkkp1" path="res://assets/player/nerd-single.png" id="6_mp3t0"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="8_74xq6"]
+[ext_resource type="FontFile" uid="uid://dfcu42nqdla7t" path="res://assets/fonts/retro-pixel-petty-5x5.ttf" id="8_y7muu"]
+[ext_resource type="StyleBox" uid="uid://b30t2jd32fr7o" path="res://assets/themes/menu_button.tres" id="9_1e8st"]
+[ext_resource type="StyleBox" uid="uid://b7smbx1ov1jrf" path="res://assets/themes/menu_button_hover.tres" id="10_luv05"]
+[ext_resource type="PackedScene" uid="uid://d5yq7oke0bkt" path="res://game/ui/levellist/level_list.tscn" id="12_jav0n"]
+[ext_resource type="Texture2D" uid="uid://c64f2dl6bm2xk" path="res://assets/ui/menu_marker.png" id="12_y0uty"]
+[ext_resource type="PackedScene" uid="uid://dlhb6ospoeaj7" path="res://game/ui/leaderboard/leaderboard.tscn" id="13_t1lxw"]
+[ext_resource type="PackedScene" uid="uid://bb8c2d1ve65y" path="res://game/ui/leaderboard/sw_leaderboard.tscn" id="14_iyb2r"]
+[ext_resource type="PackedScene" uid="uid://dn28ln3cxoguj" path="res://game/ui/credits.tscn" id="14_w2qit"]
+[ext_resource type="PackedScene" uid="uid://dclksevb36yuk" path="res://game/ui/options.tscn" id="15_bfkb4"]
+
+[sub_resource type="Animation" id="Animation_27xon"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dxj37"]
+resource_name = "animate_bug"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08a4u"]
+_data = {
+"RESET": SubResource("Animation_27xon"),
+"animate_bug": SubResource("Animation_dxj37")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_id0m5"]
+font = ExtResource("8_y7muu")
+font_size = 15
+font_color = Color(0.952941, 0.713726, 0.0823529, 1)
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shadow_size = 2
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="MainScreen" type="CanvasLayer"]
+script = ExtResource("1_q3hqx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2btbb")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="Mainscreen" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_74xq6")
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 20
+
+[node name="VB" type="VBoxContainer" parent="Mainscreen"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Mainscreen/VB"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Mainscreen/VB/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Container" type="Control" parent="Mainscreen/VB/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Mainscreen/VB/HBoxContainer/MarginContainer/Container"]
+position = Vector2(32, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("3_yyq8q")
+hframes = 2
+
+[node name="Icon" type="TextureRect" parent="Mainscreen/VB/HBoxContainer/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_74iis")
+stretch_mode = 4
+
+[node name="icon_animation" type="AnimationPlayer" parent="Mainscreen/VB/HBoxContainer/MarginContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_08a4u")
+}
+autoplay = "animate_bug"
+
+[node name="LabelTitle" type="Label" parent="Mainscreen/VB/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+text = "Office Run"
+label_settings = ExtResource("5_xphb2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Mainscreen/VB/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 9
+
+[node name="TextureRect" type="TextureRect" parent="Mainscreen/VB/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_mp3t0")
+stretch_mode = 3
+
+[node name="Container" type="Control" parent="Mainscreen/VB/HBoxContainer/MarginContainer2"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Mainscreen/VB/HBoxContainer/MarginContainer2/Container"]
+position = Vector2(30, 30)
+texture = ExtResource("6_mp3t0")
+hframes = 2
+
+[node name="Icon" type="TextureRect" parent="Mainscreen/VB/HBoxContainer/MarginContainer2"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_74iis")
+stretch_mode = 4
+
+[node name="icon_animation" type="AnimationPlayer" parent="Mainscreen/VB/HBoxContainer/MarginContainer2"]
+libraries = {
+"": SubResource("AnimationLibrary_08a4u")
+}
+autoplay = "animate_bug"
+
+[node name="highscoreLabel" type="Label" parent="Mainscreen/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "highscore:  9999"
+label_settings = SubResource("LabelSettings_id0m5")
+
+[node name="-spacer-" type="Label" parent="Mainscreen/VB"]
+layout_mode = 2
+
+[node name="options" type="VBoxContainer" parent="Mainscreen/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="playbutton" type="Button" parent="Mainscreen/VB/options"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_neighbor_left = NodePath("../optionsbutton")
+focus_neighbor_top = NodePath("../optionsbutton")
+focus_neighbor_right = NodePath("../levellistbutton")
+focus_neighbor_bottom = NodePath("../levellistbutton")
+focus_next = NodePath("../levellistbutton")
+focus_previous = NodePath("../optionsbutton")
+theme = ExtResource("8_74xq6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/font_focus_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("9_1e8st")
+theme_override_styles/hover = ExtResource("10_luv05")
+theme_override_styles/focus = ExtResource("10_luv05")
+text = "MENU_LABEL_PLAY"
+icon = ExtResource("12_y0uty")
+
+[node name="levellistbutton" type="Button" parent="Mainscreen/VB/options"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_neighbor_left = NodePath("../playbutton")
+focus_neighbor_top = NodePath("../playbutton")
+focus_neighbor_right = NodePath("../highscorebutton")
+focus_neighbor_bottom = NodePath("../highscorebutton")
+focus_next = NodePath("../highscorebutton")
+focus_previous = NodePath("../playbutton")
+theme = ExtResource("8_74xq6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("9_1e8st")
+theme_override_styles/hover = ExtResource("10_luv05")
+theme_override_styles/focus = ExtResource("10_luv05")
+text = "MENU_MODE_TRAINING"
+icon = ExtResource("12_y0uty")
+
+[node name="highscorebutton" type="Button" parent="Mainscreen/VB/options"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_neighbor_left = NodePath("../levellistbutton")
+focus_neighbor_top = NodePath("../levellistbutton")
+focus_neighbor_right = NodePath("../creditsbutton")
+focus_neighbor_bottom = NodePath("../creditsbutton")
+focus_next = NodePath("../creditsbutton")
+focus_previous = NodePath("../levellistbutton")
+theme = ExtResource("8_74xq6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("9_1e8st")
+theme_override_styles/hover = ExtResource("10_luv05")
+theme_override_styles/focus = ExtResource("10_luv05")
+text = "Highscores"
+icon = ExtResource("12_y0uty")
+
+[node name="creditsbutton" type="Button" parent="Mainscreen/VB/options"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_neighbor_left = NodePath("../highscorebutton")
+focus_neighbor_top = NodePath("../highscorebutton")
+focus_neighbor_right = NodePath("../optionsbutton")
+focus_neighbor_bottom = NodePath("../optionsbutton")
+focus_next = NodePath("../optionsbutton")
+focus_previous = NodePath("../highscorebutton")
+theme = ExtResource("8_74xq6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/font_focus_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("9_1e8st")
+theme_override_styles/hover = ExtResource("10_luv05")
+theme_override_styles/focus = ExtResource("10_luv05")
+text = "MENU_LABEL_CREDITS"
+icon = ExtResource("12_y0uty")
+
+[node name="optionsbutton" type="Button" parent="Mainscreen/VB/options"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_neighbor_left = NodePath("../creditsbutton")
+focus_neighbor_top = NodePath("../creditsbutton")
+focus_neighbor_right = NodePath("../playbutton")
+focus_neighbor_bottom = NodePath("../playbutton")
+focus_next = NodePath("../playbutton")
+focus_previous = NodePath("../creditsbutton")
+theme = ExtResource("8_74xq6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/font_focus_color = Color(0.815686, 0.360784, 0.294118, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = ExtResource("9_1e8st")
+theme_override_styles/hover = ExtResource("10_luv05")
+theme_override_styles/focus = ExtResource("10_luv05")
+text = "MENU_OPTIONS"
+icon = ExtResource("12_y0uty")
+
+[node name="LevelList" parent="." instance=ExtResource("12_jav0n")]
+visible = false
+
+[node name="Leaderboard" parent="." instance=ExtResource("13_t1lxw")]
+visible = false
+
+[node name="SW_Leaderboard" parent="." instance=ExtResource("14_iyb2r")]
+visible = false
+
+[node name="credits" parent="." instance=ExtResource("14_w2qit")]
+visible = false
+
+[node name="options" parent="." instance=ExtResource("15_bfkb4")]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="pressed" from="Mainscreen/VB/options/playbutton" to="." method="_on_playbutton_pressed"]
+[connection signal="pressed" from="Mainscreen/VB/options/levellistbutton" to="." method="_on_training_button_pressed"]
+[connection signal="pressed" from="Mainscreen/VB/options/highscorebutton" to="." method="_on_highscorebutton_pressed"]
+[connection signal="pressed" from="Mainscreen/VB/options/creditsbutton" to="." method="_on_creditsbutton_pressed"]
+[connection signal="pressed" from="Mainscreen/VB/options/optionsbutton" to="." method="_on_optionsbutton_pressed"]
+[connection signal="hidden" from="LevelList" to="." method="_on_level_list_hidden"]
+[connection signal="hidden" from="Leaderboard" to="." method="_on_leaderboard_hidden"]
+[connection signal="hidden" from="SW_Leaderboard" to="." method="_on_leaderboard_hidden"]
+[connection signal="hidden" from="credits" to="." method="_on_credits_hidden"]
+[connection signal="hidden" from="options" to="." method="_on_options_hidden"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

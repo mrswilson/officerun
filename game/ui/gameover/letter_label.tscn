@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmlmsxh6bpeik"]
+
+[ext_resource type="Script" path="res://game/ui/gameover/letter_label.gd" id="1_poyr4"]
+[ext_resource type="LabelSettings" uid="uid://br1rrf17bl5eg" path="res://assets/themes/font_mainscreen_klein.tres" id="2_ppntc"]
+
+[node name="LetterLabel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("1_poyr4")
+
+[node name="letter_label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 28.0
+text = "A"
+label_settings = ExtResource("2_ppntc")
+horizontal_alignment = 1
+vertical_alignment = 1

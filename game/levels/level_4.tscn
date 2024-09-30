@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4eut1pvrrjme"]
+
+[ext_resource type="PackedScene" uid="uid://caqmnilwu43bs" path="res://game/levels/level_base.tscn" id="1_h0eu0"]
+[ext_resource type="PackedScene" uid="uid://dopmg8b6wbcv5" path="res://game/Bugs/bug_spawner.tscn" id="2_fqn53"]
+[ext_resource type="PackedScene" uid="uid://caw18ogoys16i" path="res://game/hotspots/phone.tscn" id="2_rwj0u"]
+[ext_resource type="PackedScene" uid="uid://c4l0kg46dbt8y" path="res://game/hotspots/server.tscn" id="3_nyao3"]
+[ext_resource type="PackedScene" uid="uid://ut5nyvkd0cy5" path="res://game/hotspots/barrel.tscn" id="4_16nwa"]
+[ext_resource type="Texture2D" uid="uid://b0h0aome0v1ae" path="res://assets/items/Barrel/Idle/1.png" id="6_lpt6j"]
+[ext_resource type="LabelSettings" uid="uid://bjjwvp1ruslmy" path="res://assets/themes/instructions.tres" id="7_jljgv"]
+
+[node name="Level_4" instance=ExtResource("1_h0eu0")]
+duration = 240
+
+[node name="BugSpawner" parent="Room/Bugs" index="0"]
+position = Vector2(-144, -544)
+
+[node name="BugSpawner2" parent="Room/Bugs" index="1" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("2_fqn53")]
+position = Vector2(1160, -560)
+speed = 50.0
+waypointsNode = NodePath("../waypoints")
+exit = NodePath("../Exit")
+
+[node name="Marker2D" type="Marker2D" parent="Room/Bugs/waypoints" index="0"]
+position = Vector2(-208, -128)
+
+[node name="Marker2D2" type="Marker2D" parent="Room/Bugs/waypoints" index="1"]
+position = Vector2(984, -72)
+
+[node name="Marker2D3" type="Marker2D" parent="Room/Bugs/waypoints" index="2"]
+position = Vector2(544, -520)
+
+[node name="Marker2D4" type="Marker2D" parent="Room/Bugs/waypoints" index="3"]
+position = Vector2(1312, -520)
+
+[node name="phone" parent="Room/Hotspots" index="0" instance=ExtResource("2_rwj0u")]
+position = Vector2(75, -142)
+
+[node name="phone2" parent="Room/Hotspots" index="1" instance=ExtResource("2_rwj0u")]
+position = Vector2(1230, -79)
+
+[node name="Server" parent="Room/Hotspots" index="2" instance=ExtResource("3_nyao3")]
+position = Vector2(48, -624)
+
+[node name="Barrel" parent="Room/Hotspots" index="3" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("4_16nwa")]
+position = Vector2(480, -617)
+waypointsNode = NodePath("../../Bugs/waypoints")
+exit = NodePath("../../Bugs/Exit")
+points = 30
+
+[node name="Barrel2" parent="Room/Hotspots" index="4" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("4_16nwa")]
+position = Vector2(1360, -268)
+waypointsNode = NodePath("../../Bugs/waypoints")
+exit = NodePath("../../Bugs/Exit")
+points = 30
+
+[node name="Barrel3" parent="Room/Hotspots" index="5" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("4_16nwa")]
+position = Vector2(755, -411)
+waypointsNode = NodePath("../../Bugs/waypoints")
+exit = NodePath("../../Bugs/Exit")
+points = 30
+
+[node name="Barrel4" parent="Room/Hotspots" index="6" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("4_16nwa")]
+position = Vector2(-45, -194)
+waypointsNode = NodePath("../../Bugs/waypoints")
+exit = NodePath("../../Bugs/Exit")
+points = 30
+
+[node name="Minimap" parent="UI Overlay" index="2"]
+visible = true
+
+[node name="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="0"]
+text = "Level 4"
+
+[node name="TitleLabel" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="2"]
+text = "LEVEL_4_TITLE"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI Overlay/Instructions/Panel/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer2/Control" index="0"]
+texture = ExtResource("6_lpt6j")
+offset = Vector2(20, 0)
+
+[node name="Label" type="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer2" index="1"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+text = "LEVEL_4_INSTRUCTION"
+label_settings = ExtResource("7_jljgv")
+autowrap_mode = 3

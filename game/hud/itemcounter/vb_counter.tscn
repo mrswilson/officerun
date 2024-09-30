@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://y3s3c4okyua5"]
+
+[ext_resource type="PackedScene" uid="uid://dd60ppbeeyeqe" path="res://game/hud/itemcounter/item_counter.tscn" id="1_wf3hw"]
+[ext_resource type="Script" path="res://game/hud/itemcounter/vb_counter.gd" id="2_u3apl"]
+
+[node name="VBCounter" instance=ExtResource("1_wf3hw")]
+script = ExtResource("2_u3apl")
+points = 30
+
+[node name="ScoreDelayTimer" type="Timer" parent="." index="3"]
+wait_time = 0.5
+one_shot = true
+
+[node name="AudioStreamPlayer2D" parent="." index="4"]
+max_distance = 1.0
+bus = &"sfx"
+
+[connection signal="timeout" from="ScoreDelayTimer" to="." method="_on_score_delay_timer_timeout"]

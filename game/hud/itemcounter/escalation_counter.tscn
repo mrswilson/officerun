@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbv8f43cwi15m"]
+
+[ext_resource type="Script" path="res://game/hud/itemcounter/item_counter.gd" id="1_540nq"]
+[ext_resource type="Texture2D" uid="uid://c03nkkqwh4lbx" path="res://assets/ui/escalation_singles_32.png" id="1_pp71w"]
+[ext_resource type="FontFile" uid="uid://wh0sqeshpxd5" path="res://assets/fonts/Covenant5x5.ttf" id="2_ev3eq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rvcis"]
+font = ExtResource("2_ev3eq")
+font_size = 15
+font_color = Color(0.913725, 0.913725, 0.913725, 1)
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shadow_size = 0
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(0, 0)
+
+[node name="ItemCounter" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -8.0
+offset_right = 48.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_540nq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_rvcis")
+
+[node name="item" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_pp71w")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="reset_timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="reset_timer" to="." method="_on_reset_timer_timeout"]

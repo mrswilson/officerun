@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk32tmqdag0oj"]
+
+[ext_resource type="Script" path="res://game/NPC/npc.gd" id="1_u8yxq"]
+[ext_resource type="Texture2D" uid="uid://d2ykb84rxkqwp" path="res://assets/npc/npc1.png" id="3_ivtny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j35c5"]
+size = Vector2(25, 14)
+
+[sub_resource type="Animation" id="Animation_w08p2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [112]
+}
+
+[sub_resource type="Animation" id="Animation_hcgak"]
+resource_name = "walk_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [130, 131, 132, 133, 134, 135]
+}
+
+[sub_resource type="Animation" id="Animation_la25w"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [124, 125, 126, 127, 128, 129]
+}
+
+[sub_resource type="Animation" id="Animation_mattv"]
+resource_name = "walk_right"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [112, 113, 114, 115, 116, 117]
+}
+
+[sub_resource type="Animation" id="Animation_fbmj8"]
+resource_name = "walk_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [118, 119, 120, 121, 122, 123]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8goo"]
+_data = {
+"RESET": SubResource("Animation_w08p2"),
+"walk_down": SubResource("Animation_hcgak"),
+"walk_left": SubResource("Animation_la25w"),
+"walk_right": SubResource("Animation_mattv"),
+"walk_up": SubResource("Animation_fbmj8")
+}
+
+[node name="NPC" type="CharacterBody2D" groups=["npc"]]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 128
+collision_mask = 147
+script = ExtResource("1_u8yxq")
+
+[node name="sprite" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+texture = ExtResource("3_ivtny")
+offset = Vector2(0, -32)
+hframes = 56
+vframes = 20
+frame = 112
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_j35c5")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="navAgent" type="NavigationAgent2D" parent="Navigation"]
+path_postprocessing = 1
+radius = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e8goo")
+}
+
+[connection signal="navigation_finished" from="Navigation/navAgent" to="." method="_on_nav_agent_navigation_finished"]

@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://o8d0woyi0job"]
+
+[ext_resource type="Script" path="res://game/intranet/intranet.gd" id="1_5qdji"]
+[ext_resource type="PackedScene" uid="uid://ciq23guq02vxj" path="res://game/logic/interaction/interaction_area.tscn" id="1_su84b"]
+[ext_resource type="Texture2D" uid="uid://c7srbl3xuvjji" path="res://assets/ui/circle_42_weiss.png" id="2_kpbev"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="4_ir5mc"]
+[ext_resource type="FontFile" uid="uid://cftcm5fy1fwcg" path="res://assets/fonts/Retro Gaming.ttf" id="5_qc2re"]
+[ext_resource type="StyleBox" uid="uid://da0xjbnrreooi" path="res://assets/themes/instruction_panel.tres" id="5_x7vnv"]
+[ext_resource type="Texture2D" uid="uid://bb17u4xsya3io" path="res://assets/items/screen.png" id="5_y2eam"]
+[ext_resource type="LabelSettings" uid="uid://d257haldggbwj" path="res://assets/themes/fliesstext_intranet.tres" id="7_d0kbg"]
+[ext_resource type="FontFile" uid="uid://f4tn4vbsiiyu" path="res://assets/fonts/DePixelKlein.ttf" id="7_yyksm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8uxd"]
+radius = 32.0478
+
+[sub_resource type="LabelSettings" id="LabelSettings_n281l"]
+font = ExtResource("5_qc2re")
+font_color = Color(0.16046, 0.589483, 0.755242, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_owcb8"]
+font = ExtResource("7_yyksm")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="Intranet" type="Node2D"]
+script = ExtResource("1_5qdji")
+
+[node name="InteractionArea" parent="." instance=ExtResource("1_su84b")]
+
+[node name="IA_Collision" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-2.28882e-05, 0.249989)
+shape = SubResource("CircleShape2D_p8uxd")
+debug_color = Color(0.215686, 0.639216, 0, 0.419608)
+
+[node name="collisionMarker" type="Sprite2D" parent="InteractionArea"]
+self_modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(-0.500023, 0.499977)
+scale = Vector2(1.45238, 1.45238)
+texture = ExtResource("2_kpbev")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Intranetbeitrag" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ir5mc")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Intranetbeitrag"]
+layout_mode = 2
+color = Color(0.164706, 0.164706, 0.164706, 0.835294)
+
+[node name="screen" type="TextureRect" parent="CanvasLayer/Intranetbeitrag"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("5_y2eam")
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Intranetbeitrag"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Intranetbeitrag/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="title" type="Label" parent="CanvasLayer/Intranetbeitrag/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "IN_NEW_ENTRY"
+label_settings = SubResource("LabelSettings_n281l")
+
+[node name="entrylabel" type="Label" parent="CanvasLayer/Intranetbeitrag/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 178)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("5_qc2re")
+theme_override_font_sizes/font_size = 14
+text = "Im Zentrum unserer Galaxie (Milchstraße) soll sich ein supermassereiches Schwarzes Loch befinden – es trägt den Namen Sagittarius A* (Sgr A*) und umfasst eine Masse, die 4 Millionen Mal so groß ist wie die Sonne."
+label_settings = ExtResource("7_d0kbg")
+autowrap_mode = 2
+
+[node name="pressley" type="Label" parent="CanvasLayer/Intranetbeitrag/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_PRESS_ANYKEY_CONTINUE"
+label_settings = SubResource("LabelSettings_owcb8")
+horizontal_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/Intranetbeitrag"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_x7vnv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

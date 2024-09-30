@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn28ln3cxoguj"]
+
+[ext_resource type="Script" path="res://game/ui/credits.gd" id="1_8eb17"]
+[ext_resource type="Texture2D" uid="uid://c4yqym6kmtiip" path="res://assets/backgrounds/Yellow.png" id="2_wd7si"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="3_tfbtv"]
+[ext_resource type="LabelSettings" uid="uid://clo232ga6823p" path="res://assets/themes/credits_labels.tres" id="4_55l77"]
+[ext_resource type="LabelSettings" uid="uid://d0rrpte6c6o4w" path="res://assets/themes/credits.tres" id="5_b0tjq"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="6_0ferj"]
+
+[node name="credits" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8eb17")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_wd7si")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "Credits"
+label_settings = ExtResource("3_tfbtv")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MC/VB"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MC/VB"]
+layout_mode = 2
+columns = 2
+
+[node name="dev" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CREDITS_GAME_DEVELOPMENT"
+label_settings = ExtResource("4_55l77")
+
+[node name="devNames" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "mrswilson
+Dr. Mo"
+label_settings = ExtResource("5_b0tjq")
+
+[node name="Control" type="Control" parent="MC/VB/GridContainer"]
+custom_minimum_size = Vector2(131, 0)
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="MC/VB/GridContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="graphics" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "MENU_LABEL_GRAPHICS"
+label_settings = ExtResource("4_55l77")
+
+[node name="graphicsNames" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+text = "LimeZu
+GrafxKid"
+label_settings = ExtResource("5_b0tjq")
+
+[node name="Control3" type="Control" parent="MC/VB/GridContainer"]
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="MC/VB/GridContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="music" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CREDITS_SOUNDTRACK"
+label_settings = ExtResource("4_55l77")
+
+[node name="musicNames" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+text = "Steek Stook"
+label_settings = ExtResource("5_b0tjq")
+
+[node name="Control5" type="Control" parent="MC/VB/GridContainer"]
+layout_mode = 2
+
+[node name="Control6" type="Control" parent="MC/VB/GridContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="sounds" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CREDITS_SFX"
+label_settings = ExtResource("4_55l77")
+
+[node name="soundsNames" type="Label" parent="MC/VB/GridContainer"]
+layout_mode = 2
+text = "mrswilson"
+label_settings = ExtResource("5_b0tjq")
+
+[node name="fonts" type="Label" parent="MC/VB/GridContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "Fonts: "
+label_settings = ExtResource("4_55l77")
+
+[node name="fontsNames" type="Label" parent="MC/VB/GridContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "???"
+label_settings = ExtResource("5_b0tjq")
+
+[node name="CloseButton" type="Button" parent="MC/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme = ExtResource("6_0ferj")
+text = "MENU_LABEL_CLOSE"
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MC/VB/CloseButton" to="." method="_on_close_button_pressed"]

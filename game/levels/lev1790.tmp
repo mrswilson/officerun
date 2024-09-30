@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://duicnvcdybtl5"]
+
+[ext_resource type="PackedScene" uid="uid://caqmnilwu43bs" path="res://game/levels/level_base.tscn" id="1_bb24u"]
+[ext_resource type="PackedScene" uid="uid://cmh6vieeaqh18" path="res://game/hotspots/hotspot.tscn" id="2_f72u8"]
+
+[sub_resource type="Curve2D" id="Curve2D_64rqf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 406, 170, 0, 0, 0, 0, 471, 257, 0, 0, 0, 0, 442, 306, 0, 0, 0, 0, 311, 286, 0, 0, 0, 0, 382, 222, 0, 0, 0, 0, 562, 352)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_oyrv1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 780, 169, 0, 0, 0, 0, 673, 272, 0, 0, 0, 0, 792, 402, 0, 0, 0, 0, 931, 293, 0, 0, 0, 0, 349, 186, 0, 0, 0, 0, 439, 386, 0, 0, 0, 0, 552, 193, 0, 0, 0, 0, 571, 354)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_0av3j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 163, 413, 0, 0, 0, 0, 480, 370, 0, 0, 0, 0, 802, 207, 0, 0, 0, 0, 959, 134, 0, 0, 0, 0, 535, 114, 0, 0, 0, 0, 569, 355)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk7w5"]
+size = Vector2(123.5, 122.5)
+
+[node name="LevelBase" instance=ExtResource("1_bb24u")]
+duration = 120
+
+[node name="level" parent="." index="0"]
+rendering_quadrant_size = 16
+layer_1/tile_data = PackedInt32Array(589840, 786432, 21, 655376, 786432, 22, 786448, 786432, 24, 786449, 851968, 24, 589843, 983040, 21, 655379, 983040, 22, 786451, 983040, 24, 720913, 851968, 22, 589841, 851968, 21)
+layer_4/tile_data = PackedInt32Array(327695, 393217, 7, 393234, 393217, 10, 327701, 393217, 12)
+
+[node name="BugSpawner" parent="Bugs" index="0" node_paths=PackedStringArray("paths")]
+paths = [NodePath("../path_1"), NodePath("../Path2D"), NodePath("../Path2D2")]
+
+[node name="path_1" type="Path2D" parent="Bugs" index="1"]
+position = Vector2(11, -5)
+curve = SubResource("Curve2D_64rqf")
+
+[node name="Path2D" type="Path2D" parent="Bugs" index="2"]
+curve = SubResource("Curve2D_oyrv1")
+
+[node name="Path2D2" type="Path2D" parent="Bugs" index="3"]
+curve = SubResource("Curve2D_0av3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bugs/BugfixArea" index="0"]
+position = Vector2(576.25, 351.75)
+shape = SubResource("RectangleShape2D_qk7w5")
+
+[node name="Hotspot" parent="." index="2" instance=ExtResource("2_f72u8")]
+position = Vector2(368, 401)
+alarm_after = Vector2i(15, 40)
+damage_after = 5
+
+[node name="Hotspot6" parent="." index="3" instance=ExtResource("2_f72u8")]
+position = Vector2(368, 116)
+alarm_after = Vector2i(15, 40)
+damage_points = 5
+
+[node name="Hotspot7" parent="." index="4" instance=ExtResource("2_f72u8")]
+position = Vector2(1057, 401)
+alarm_after = Vector2i(15, 40)
+damage_points = 5
+
+[node name="Player" parent="." index="6"]
+position = Vector2(372, 420)
+
+[node name="LevelTimer" parent="." index="7"]
+autostart = false

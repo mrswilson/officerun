@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1mkdxfokay45"]
+
+[ext_resource type="PackedScene" uid="uid://caqmnilwu43bs" path="res://game/levels/level_base.tscn" id="1_8wqj1"]
+[ext_resource type="PackedScene" uid="uid://caw18ogoys16i" path="res://game/hotspots/phone.tscn" id="2_8566t"]
+[ext_resource type="PackedScene" uid="uid://c4l0kg46dbt8y" path="res://game/hotspots/server.tscn" id="3_dtu0o"]
+[ext_resource type="PackedScene" uid="uid://ut5nyvkd0cy5" path="res://game/hotspots/barrel.tscn" id="4_miagv"]
+[ext_resource type="PackedScene" uid="uid://o8d0woyi0job" path="res://game/intranet/intranet.tscn" id="5_1ff76"]
+[ext_resource type="PackedScene" uid="uid://dk32tmqdag0oj" path="res://game/NPC/npc.tscn" id="5_x1c0r"]
+[ext_resource type="Texture2D" uid="uid://b18cadtk1pxm2" path="res://assets/npc/npc2.png" id="6_a3pld"]
+[ext_resource type="Texture2D" uid="uid://dsaaxkxload8u" path="res://assets/npc/npc3.png" id="7_cwhfw"]
+[ext_resource type="Texture2D" uid="uid://c6yup1mhaorol" path="res://assets/npc/npc4.png" id="8_2ift8"]
+[ext_resource type="Texture2D" uid="uid://cs7vcngd6y7tr" path="res://assets/npc/npc5.png" id="9_nhxom"]
+
+[node name="TestLevel" instance=ExtResource("1_8wqj1")]
+duration = 300
+
+[node name="BugSpawner" parent="Room/Bugs" index="0"]
+position = Vector2(-144, -552)
+active = false
+
+[node name="Marker2D" type="Marker2D" parent="Room/Bugs/waypoints" index="0"]
+position = Vector2(128, -88)
+
+[node name="Marker2D2" type="Marker2D" parent="Room/Bugs/waypoints" index="1"]
+position = Vector2(1120, -96)
+
+[node name="Marker2D3" type="Marker2D" parent="Room/Bugs/waypoints" index="2"]
+position = Vector2(1288, -600)
+
+[node name="Marker2D4" type="Marker2D" parent="Room/Bugs/waypoints" index="3"]
+position = Vector2(1016, -608)
+
+[node name="Marker2D5" type="Marker2D" parent="Room/Bugs/waypoints" index="4"]
+position = Vector2(480, -608)
+
+[node name="Marker2D6" type="Marker2D" parent="Room/Bugs/waypoints" index="5"]
+position = Vector2(-96, -560)
+
+[node name="Marker2D7" type="Marker2D" parent="Room/Bugs/waypoints" index="6"]
+position = Vector2(-184, -144)
+
+[node name="Marker2D8" type="Marker2D" parent="Room/Bugs/waypoints" index="7"]
+position = Vector2(208, -80)
+
+[node name="Marker2D9" type="Marker2D" parent="Room/Bugs/waypoints" index="8"]
+position = Vector2(421, -96)
+
+[node name="Marker2D10" type="Marker2D" parent="Room/Bugs/waypoints" index="9"]
+position = Vector2(1360, -280)
+
+[node name="Marker2D11" type="Marker2D" parent="Room/Bugs/waypoints" index="10"]
+position = Vector2(824, -608)
+
+[node name="Marker2D12" type="Marker2D" parent="Room/Bugs/waypoints" index="11"]
+position = Vector2(680, -600)
+
+[node name="Marker2D13" type="Marker2D" parent="Room/Bugs/waypoints" index="12"]
+position = Vector2(157, -600)
+
+[node name="Server" parent="Room/Hotspots" index="0" instance=ExtResource("3_dtu0o")]
+position = Vector2(1042, -272)
+points = 10
+damage_points = 5
+alarm_sound_interval = 4.0
+
+[node name="phone" parent="Room/Hotspots" index="1" instance=ExtResource("2_8566t")]
+position = Vector2(1128, -320)
+hotspot_name = "phone 1"
+damage_after = 15
+damage_points = 2
+
+[node name="phone2" parent="Room/Hotspots" index="2" instance=ExtResource("2_8566t")]
+position = Vector2(1153, -216)
+hotspot_name = "phone 2"
+damage_after = 20
+damage_points = 10
+
+[node name="Barrel" parent="Room/Hotspots" index="3" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("4_miagv")]
+position = Vector2(1200, -352)
+waypointsNode = NodePath("../../Bugs/waypoints")
+exit = NodePath("../../Bugs/Exit")
+points = 40
+
+[node name="BugfixArea" parent="Room/Meeting" index="0"]
+position = Vector2(944, -400)
+
+[node name="CollisionShape2D" parent="Room/Meeting/BugfixArea" index="0"]
+position = Vector2(-8, 16)
+
+[node name="Intranet" parent="Room/Intranet" index="0" instance=ExtResource("5_1ff76")]
+position = Vector2(48, -176)
+
+[node name="Intranet2" parent="Room/Intranet" index="1" instance=ExtResource("5_1ff76")]
+position = Vector2(212, -176)
+
+[node name="Intranet3" parent="Room/Intranet" index="2" instance=ExtResource("5_1ff76")]
+position = Vector2(80, -592)
+
+[node name="NPCs" parent="Room" index="5"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="NPC" parent="Room/NPCs" index="0" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("5_x1c0r")]
+position = Vector2(32, -332)
+spritesheet = ExtResource("6_a3pld")
+speed = 70
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC2" parent="Room/NPCs" index="1" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("5_x1c0r")]
+position = Vector2(688, -316)
+spritesheet = ExtResource("7_cwhfw")
+speed = 70
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC3" parent="Room/NPCs" index="2" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("5_x1c0r")]
+position = Vector2(1073, -576)
+spritesheet = ExtResource("8_2ift8")
+speed = 70
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC4" parent="Room/NPCs" index="3" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("5_x1c0r")]
+position = Vector2(365, -304)
+spritesheet = ExtResource("9_nhxom")
+speed = 70
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="Player" parent="Room" index="6"]
+position = Vector2(112, -347)
+collision_mask = 178
+
+[node name="Minimap" parent="UI Overlay" index="2"]
+zoom = 1.0
+
+[node name="Instructions" parent="UI Overlay" index="3"]
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 120
+
+[node name="VBoxContainer" parent="UI Overlay/Instructions/Panel" index="0"]
+offset_left = -54.0
+offset_right = 54.0
+
+[node name="HBoxContainer" parent="UI Overlay/Instructions/Panel/VBoxContainer" index="0"]
+size_flags_vertical = 4
+
+[node name="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="0"]
+text = "Level"
+
+[node name="TitleLabel" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="2"]
+text = "Test"

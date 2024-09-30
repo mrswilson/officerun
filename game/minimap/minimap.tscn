@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceacc2slqwtoi"]
+
+[ext_resource type="Texture2D" uid="uid://craratgvwnklw" path="res://assets/ui/minimap/minimap_frame.png" id="1_y6bnk"]
+[ext_resource type="Script" path="res://game/minimap/minimap.gd" id="1_yxpdf"]
+[ext_resource type="Texture2D" uid="uid://dblmt3g58yv5q" path="res://assets/ui/minimap/pattern_blueprintPaper.png" id="2_x2fi6"]
+[ext_resource type="Texture2D" uid="uid://cax8pygeax4ks" path="res://assets/ui/minimap/marker_player.png" id="4_clckh"]
+[ext_resource type="Texture2D" uid="uid://bwsd2iaas1kog" path="res://assets/ui/minimap/marker_bas.png" id="5_melh6"]
+[ext_resource type="Texture2D" uid="uid://de8noy36rr06a" path="res://assets/ui/minimap/marker_alarm.png" id="6_u2bcj"]
+[ext_resource type="Texture2D" uid="uid://c0hm3hcltbfhq" path="res://assets/ui/icon_phone.png" id="7_hppcs"]
+[ext_resource type="Texture2D" uid="uid://ccc52sul5e5jm" path="res://assets/ui/icon_server.png" id="8_panro"]
+
+[node name="Minimap" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -392.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_yxpdf")
+
+[node name="Frame" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_y6bnk")
+region_rect = Rect2(9, 6, 49, 50)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Grid" type="TextureRect" parent="MC"]
+layout_mode = 2
+texture = ExtResource("2_x2fi6")
+stretch_mode = 1
+
+[node name="PlayerMarker" type="Sprite2D" parent="MC/Grid"]
+position = Vector2(44, 44)
+texture = ExtResource("4_clckh")
+
+[node name="BASMarker" type="Sprite2D" parent="MC/Grid"]
+visible = false
+position = Vector2(41, 33)
+texture = ExtResource("5_melh6")
+
+[node name="AlarmMarker" type="Sprite2D" parent="MC/Grid"]
+visible = false
+position = Vector2(65, 17)
+texture = ExtResource("6_u2bcj")
+
+[node name="PhoneMarker" type="Sprite2D" parent="MC/Grid"]
+visible = false
+self_modulate = Color(0.742188, 0.281672, 0.101471, 1)
+position = Vector2(65, 57)
+texture = ExtResource("7_hppcs")
+
+[node name="ServerMarker" type="Sprite2D" parent="MC/Grid"]
+visible = false
+self_modulate = Color(0.742188, 0.281672, 0.101471, 1)
+position = Vector2(17, 57)
+texture = ExtResource("8_panro")

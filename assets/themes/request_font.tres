@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://0iwaw01taftw"]
+
+[ext_resource type="FontFile" uid="uid://bt6dnw25njfrt" path="res://assets/fonts/retro-pixel-petty-5h.ttf" id="1_q3gwq"]
+
+[resource]
+font = ExtResource("1_q3gwq")
+font_size = 9
+font_color = Color(0.0941176, 0.0941176, 0.0941176, 1)

@@ -1,0 +1,222 @@
+[gd_scene load_steps=20 format=3 uid="uid://r4un7p6islu7"]
+
+[ext_resource type="PackedScene" uid="uid://caqmnilwu43bs" path="res://game/levels/level_base.tscn" id="1_cxwws"]
+[ext_resource type="PackedScene" uid="uid://dopmg8b6wbcv5" path="res://game/Bugs/bug_spawner.tscn" id="2_rh3j6"]
+[ext_resource type="PackedScene" uid="uid://caw18ogoys16i" path="res://game/hotspots/phone.tscn" id="3_c0433"]
+[ext_resource type="PackedScene" uid="uid://c4l0kg46dbt8y" path="res://game/hotspots/server.tscn" id="4_nd0q0"]
+[ext_resource type="PackedScene" uid="uid://o8d0woyi0job" path="res://game/intranet/intranet.tscn" id="5_3svb6"]
+[ext_resource type="Texture2D" uid="uid://b5la5sct28cca" path="res://assets/ui/icon_intranet.png" id="6_8dlir"]
+[ext_resource type="TileSet" uid="uid://13g6sshtyelt" path="res://game/levels/tileset_items.tres" id="6_ksjms"]
+[ext_resource type="PackedScene" uid="uid://dk32tmqdag0oj" path="res://game/NPC/npc.tscn" id="6_qwboc"]
+[ext_resource type="LabelSettings" uid="uid://d257haldggbwj" path="res://assets/themes/fliesstext_intranet.tres" id="7_85qeg"]
+[ext_resource type="Texture2D" uid="uid://d2ykb84rxkqwp" path="res://assets/npc/npc1.png" id="7_v1igp"]
+[ext_resource type="Texture2D" uid="uid://b18cadtk1pxm2" path="res://assets/npc/npc2.png" id="8_6tfem"]
+[ext_resource type="AudioStream" uid="uid://d3d5y12ti85nx" path="res://assets/music/arcade.ogg" id="8_kcjts"]
+[ext_resource type="Texture2D" uid="uid://dsaaxkxload8u" path="res://assets/npc/npc3.png" id="9_8uloi"]
+[ext_resource type="Texture2D" uid="uid://c6yup1mhaorol" path="res://assets/npc/npc4.png" id="10_2xhrf"]
+[ext_resource type="Texture2D" uid="uid://cs7vcngd6y7tr" path="res://assets/npc/npc5.png" id="11_on8lj"]
+[ext_resource type="Texture2D" uid="uid://bjaxpsxawjod7" path="res://assets/npc/npc6.png" id="12_bauqg"]
+[ext_resource type="Texture2D" uid="uid://c1w26i3djy7d2" path="res://assets/npc/npc7.png" id="13_ofg7c"]
+[ext_resource type="Texture2D" uid="uid://dte6mfqpevlds" path="res://assets/npc/npc9.png" id="14_u0i86"]
+[ext_resource type="Texture2D" uid="uid://b2id0ufn222hh" path="res://assets/npc/npc10.png" id="15_13d44"]
+
+[node name="level_6" instance=ExtResource("1_cxwws")]
+level_number = 6
+duration = 240
+
+[node name="BugSpawner" parent="Room/Bugs" index="0"]
+position = Vector2(184, -120)
+interval_min = 15
+interval_max = 20
+speed = 40.0
+
+[node name="BugSpawner2" parent="Room/Bugs" index="1" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("2_rh3j6")]
+position = Vector2(1336, -520)
+interval_min = 10
+interval_max = 15
+speed = 40.0
+waypointsNode = NodePath("../waypoints")
+exit = NodePath("../Exit")
+
+[node name="BugSpawner3" parent="Room/Bugs" index="2" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("2_rh3j6")]
+position = Vector2(-128, -512)
+interval_min = 8
+interval_max = 12
+speed = 50.0
+waypointsNode = NodePath("../waypoints")
+exit = NodePath("../Exit")
+
+[node name="Marker2D" type="Marker2D" parent="Room/Bugs/waypoints" index="0"]
+position = Vector2(128, -88)
+
+[node name="Marker2D2" type="Marker2D" parent="Room/Bugs/waypoints" index="1"]
+position = Vector2(1120, -96)
+
+[node name="Marker2D3" type="Marker2D" parent="Room/Bugs/waypoints" index="2"]
+position = Vector2(1288, -600)
+
+[node name="Marker2D4" type="Marker2D" parent="Room/Bugs/waypoints" index="3"]
+position = Vector2(1016, -608)
+
+[node name="Marker2D5" type="Marker2D" parent="Room/Bugs/waypoints" index="4"]
+position = Vector2(480, -608)
+
+[node name="Marker2D6" type="Marker2D" parent="Room/Bugs/waypoints" index="5"]
+position = Vector2(-96, -560)
+
+[node name="Marker2D7" type="Marker2D" parent="Room/Bugs/waypoints" index="6"]
+position = Vector2(-184, -144)
+
+[node name="Marker2D8" type="Marker2D" parent="Room/Bugs/waypoints" index="7"]
+position = Vector2(208, -80)
+
+[node name="Marker2D9" type="Marker2D" parent="Room/Bugs/waypoints" index="8"]
+position = Vector2(421, -96)
+
+[node name="Marker2D10" type="Marker2D" parent="Room/Bugs/waypoints" index="9"]
+position = Vector2(1360, -280)
+
+[node name="Marker2D11" type="Marker2D" parent="Room/Bugs/waypoints" index="10"]
+position = Vector2(824, -608)
+
+[node name="Marker2D12" type="Marker2D" parent="Room/Bugs/waypoints" index="11"]
+position = Vector2(680, -600)
+
+[node name="Marker2D13" type="Marker2D" parent="Room/Bugs/waypoints" index="12"]
+position = Vector2(157, -600)
+
+[node name="phone" parent="Room/Hotspots" index="0" instance=ExtResource("3_c0433")]
+position = Vector2(168, -136)
+
+[node name="phone2" parent="Room/Hotspots" index="1" instance=ExtResource("3_c0433")]
+position = Vector2(71, -140)
+
+[node name="Server" parent="Room/Hotspots" index="2" instance=ExtResource("4_nd0q0")]
+position = Vector2(1360, -304)
+timeout_after = Vector2i(20, 30)
+
+[node name="Intranet2" parent="Room/Intranet" index="0" instance=ExtResource("5_3svb6")]
+self_modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(208, -152)
+
+[node name="Intranet4" parent="Room/Intranet" index="1" instance=ExtResource("5_3svb6")]
+self_modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(-143, -575)
+
+[node name="Intranet5" parent="Room/Intranet" index="2" instance=ExtResource("5_3svb6")]
+self_modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(529, -559)
+
+[node name="Intranet6" parent="Room/Intranet" index="3" instance=ExtResource("5_3svb6")]
+self_modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(1168, -568)
+
+[node name="Intranet9" parent="Room/Intranet" index="4" instance=ExtResource("5_3svb6")]
+self_modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(1240, -128)
+
+[node name="Intranet10" parent="Room/Intranet" index="5" instance=ExtResource("5_3svb6")]
+self_modulate = Color(0.160784, 0.588235, 0.756863, 0.666667)
+position = Vector2(-104, -128)
+
+[node name="NPC" parent="Room/NPCs" index="0" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(507, -328)
+spritesheet = ExtResource("7_v1igp")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC2" parent="Room/NPCs" index="1" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(752, -568)
+spritesheet = ExtResource("8_6tfem")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC3" parent="Room/NPCs" index="2" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(1160, -112)
+spritesheet = ExtResource("9_8uloi")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC4" parent="Room/NPCs" index="3" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(-64, -512)
+spritesheet = ExtResource("10_2xhrf")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC5" parent="Room/NPCs" index="4" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(118, -302)
+spritesheet = ExtResource("11_on8lj")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC6" parent="Room/NPCs" index="5" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(124, -200)
+spritesheet = ExtResource("12_bauqg")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC7" parent="Room/NPCs" index="6" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(96, -440)
+spritesheet = ExtResource("13_ofg7c")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC8" parent="Room/NPCs" index="7" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(392, -160)
+spritesheet = ExtResource("14_u0i86")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC9" parent="Room/NPCs" index="8" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(1072, -544)
+spritesheet = ExtResource("7_v1igp")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="NPC10" parent="Room/NPCs" index="9" node_paths=PackedStringArray("waypointsNode") instance=ExtResource("6_qwboc")]
+position = Vector2(467, -504)
+spritesheet = ExtResource("15_13d44")
+waypointsNode = NodePath("../../Bugs/waypoints")
+
+[node name="Player" parent="Room" index="6"]
+position = Vector2(976, -240)
+
+[node name="tm_party" type="TileMap" parent="Room" index="9"]
+y_sort_enabled = true
+tile_set = ExtResource("6_ksjms")
+rendering_quadrant_size = 32
+format = 2
+layer_0/name = "tables"
+layer_0/y_sort_enabled = true
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(-720893, 262144, 34, -720892, 262144, 34, -720891, 131072, 34, -720890, 327680, 6, -720888, 458752, 6, -720887, 0, 34, -720886, 262144, 34, -720885, 262144, 34, -720895, 0, 34, -720894, 262144, 34, -720883, 131072, 34, -720884, 262144, 34, -524267, 262145, 23, -655339, 262145, 21, -720875, 262145, 22, -786396, 262145, 22, -720860, 262145, 21, -655324, 262145, 21, -524252, 262145, 23, -524268, 196609, 23, -524266, 327681, 23, -589804, 196609, 21, -589803, 262145, 21, -589802, 327681, 21, -655340, 196609, 21, -655338, 327681, 21, -720876, 196609, 22, -720874, 327681, 22, -786397, 196609, 22, -786395, 327681, 22, -720861, 196609, 21, -720859, 327681, 21, -655325, 196609, 21, -655323, 327681, 21, -589789, 196609, 21, -589788, 262145, 21, -589787, 327681, 21, -524253, 196609, 23, -524251, 327681, 23, -720889, 393216, 6)
+layer_1/name = "decoration"
+layer_1/y_sort_enabled = true
+layer_1/z_index = 2
+layer_1/tile_data = PackedInt32Array(-983035, 131074, 4, -983032, 131074, 4, -983030, 2, 4, -983027, 131074, 4, -589823, 131074, 4, -589818, 131074, 4, -589814, 131074, 4, -589810, 131074, 4, -720886, 196610, 3, -720893, 131074, 0, -720892, 524290, 2, -983026, 589826, 0, -786430, 196610, 2, -786420, 327682, 4, -720884, 196610, 2, -786428, 393218, 4, -786422, 458754, 2, -720875, 65537, 23, -720890, 65537, 23, -720894, 196609, 39, -589803, 131073, 41, -655339, 262145, 47, -589788, 262145, 47, -655324, 327681, 47, -786396, 327681, 48, -720889, 393218, 2)
+
+[node name="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="0"]
+text = "Level 6"
+
+[node name="TitleLabel" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="2"]
+text = "LEVEL_6_TITLE"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI Overlay/Instructions/Panel/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Control" type="Control" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer3" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer3/Control" index="0"]
+position = Vector2(12, 0)
+texture = ExtResource("6_8dlir")
+
+[node name="Label" type="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer3" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LEVEL_6_INSTRUCTION"
+label_settings = ExtResource("7_85qeg")
+autowrap_mode = 2
+
+[node name="MeetingPanel" parent="UI Overlay" index="5"]
+visible = false
+
+[node name="BGMusicPlayer" parent="." index="5"]
+stream = ExtResource("8_kcjts")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4l0kg46dbt8y"]
+
+[ext_resource type="PackedScene" uid="uid://cmh6vieeaqh18" path="res://game/hotspots/hotspot.tscn" id="1_od7hl"]
+[ext_resource type="Texture2D" uid="uid://en3sva87m0vs" path="res://assets/items/animated_control_room_server_32x32.png" id="2_0rhg6"]
+[ext_resource type="Texture2D" uid="uid://ccc52sul5e5jm" path="res://assets/ui/icon_server.png" id="2_w5f3j"]
+[ext_resource type="AudioStream" uid="uid://4f5rohgqutpf" path="res://assets/sounds/alarm.wav" id="4_iv27b"]
+
+[sub_resource type="Animation" id="Animation_bd6w8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_psq7k"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qodjk"]
+_data = {
+"RESET": SubResource("Animation_bd6w8"),
+"idle": SubResource("Animation_psq7k")
+}
+
+[node name="Server" instance=ExtResource("1_od7hl")]
+collision_mask = 5
+hotspot_name = "server"
+alarm_icon = ExtResource("2_w5f3j")
+alarm_message = "ALARM_SERVER"
+damage_after = 5
+alarm_sound = ExtResource("4_iv27b")
+minimap_icon = "server"
+
+[node name="icon" parent="." index="0"]
+texture = ExtResource("2_0rhg6")
+
+[node name="spriteCollision" parent="." index="1"]
+position = Vector2(0, -8)
+
+[node name="collisionMarker" parent="InteractionArea" index="1"]
+visible = true
+modulate = Color(1, 1, 1, 0.533333)
+self_modulate = Color(0.741176, 0.282353, 0.101961, 0.666667)
+
+[node name="idlePlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_qodjk")
+}
+autoplay = "idle"

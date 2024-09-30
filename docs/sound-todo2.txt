@@ -1,0 +1,31 @@
+Sounds für:
+=======================
+
+Menu-Auswahl ändern
+Eintrag wählen (enter)
+
+Bug einsammeln
+Bug entkommt
+
+Level anzeigen (Instruction Panel)
+Level begin
+Level complete
+Game over
+
+Server Alarm
+Server reset
+
+Telefon klingelt
+Telefon annehmen
+(am Telefon sprechen)
+Telefon auflegen
+Anfrage erhalten
+
+Besprechung aktiviert
+Besprechung "betreten"
+Anfragen würfeln:
+-> shuffle
+-> result (Punkte oder "Niete")
+Besprechung zu Ende
+Punkte nach der Besprechung
+

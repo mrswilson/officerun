@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://iujomsncyenl"]
+
+[ext_resource type="PackedScene" uid="uid://cmh6vieeaqh18" path="res://game/hotspots/hotspot.tscn" id="1_1sy7s"]
+[ext_resource type="Texture2D" uid="uid://bubnw774ymi6y" path="res://assets/tilesets/12_Kitchen_Shadowless_32x32.png" id="2_2xtrn"]
+[ext_resource type="Script" path="res://game/hotspots/coffeemaker.gd" id="2_v53fq"]
+
+[node name="coffeemaker" instance=ExtResource("1_1sy7s")]
+position = Vector2(0, 1)
+script = ExtResource("2_v53fq")
+hotspot_name = "coffee"
+timeout_after = Vector2i(10, 10)
+hasAlarm = false
+damage_after = 10
+
+[node name="icon" parent="." index="0"]
+position = Vector2(0, 10)
+texture = ExtResource("2_2xtrn")
+hframes = 1
+region_enabled = true
+region_rect = Rect2(480, 992, 32, 64)
+
+[node name="IA_Collision" parent="InteractionArea" index="0"]
+modulate = Color(0.16046, 0.589483, 0.755242, 1)
+
+[node name="collisionMarker" parent="InteractionArea" index="1"]
+visible = true
+modulate = Color(0.16046, 0.589483, 0.755242, 1)

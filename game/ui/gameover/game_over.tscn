@@ -1,0 +1,235 @@
+[gd_scene load_steps=10 format=3 uid="uid://fimvyqld275t"]
+
+[ext_resource type="Script" path="res://game/ui/gameover/game_over.gd" id="1_vpsp4"]
+[ext_resource type="Texture2D" uid="uid://cdws0ye30irug" path="res://assets/backgrounds/Green.png" id="2_ongri"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="3_xdpf8"]
+[ext_resource type="LabelSettings" uid="uid://br1rrf17bl5eg" path="res://assets/themes/font_mainscreen_klein.tres" id="4_0yx72"]
+[ext_resource type="PackedScene" uid="uid://cmlmsxh6bpeik" path="res://game/ui/gameover/letter_label.tscn" id="5_77y1n"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="6_hs40x"]
+
+[sub_resource type="Animation" id="Animation_68x04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/press_key_label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/press_key_label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.952941, 0.713726, 0.0823529, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qfekd"]
+resource_name = "show_keypress"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/press_key_label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.952941, 0.713726, 0.0823529, 0), Color(0.952941, 0.713726, 0.0823529, 1), Color(0.952941, 0.713726, 0.0823529, 1), Color(0.952941, 0.713726, 0.0823529, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/press_key_label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ev4f6"]
+_data = {
+"RESET": SubResource("Animation_68x04"),
+"show_keypress": SubResource("Animation_qfekd")
+}
+
+[node name="GameOver" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vpsp4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_ongri")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="gameOver" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/gameOver"]
+layout_mode = 2
+
+[node name="titleLabel" type="Label" parent="MarginContainer/VBoxContainer/gameOver/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = ExtResource("3_xdpf8")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/gameOver/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/gameOver/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Score:"
+label_settings = ExtResource("4_0yx72")
+vertical_alignment = 2
+
+[node name="scoreLabel" type="Label" parent="MarginContainer/VBoxContainer/gameOver/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "9999"
+label_settings = ExtResource("4_0yx72")
+vertical_alignment = 2
+
+[node name="press_key_label" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0.952941, 0.713726, 0.0823529, 0)
+layout_mode = 2
+text = "MENU_LABEL_PRESS_ANYKEY_CONTINUE"
+label_settings = ExtResource("4_0yx72")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="enterName" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/enterName"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="subtitleLabel" type="Label" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "New Highscore!"
+label_settings = ExtResource("4_0yx72")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer"]
+layout_mode = 2
+text = "Enter your Name:"
+label_settings = ExtResource("4_0yx72")
+
+[node name="letters" type="HBoxContainer" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="letter_1" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer/letters" instance=ExtResource("5_77y1n")]
+layout_mode = 2
+
+[node name="letter_2" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer/letters" instance=ExtResource("5_77y1n")]
+layout_mode = 2
+
+[node name="letter_3" parent="MarginContainer/VBoxContainer/enterName/VBoxContainer/letters" instance=ExtResource("5_77y1n")]
+layout_mode = 2
+
+[node name="playagainLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_PLAY_AGAIN"
+label_settings = ExtResource("4_0yx72")
+horizontal_alignment = 1
+
+[node name="buttonPanel" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="yesButton" type="Button" parent="MarginContainer/VBoxContainer/buttonPanel"]
+layout_mode = 2
+size_flags_horizontal = 5
+focus_neighbor_left = NodePath("../noButton")
+focus_neighbor_top = NodePath("../noButton")
+focus_neighbor_right = NodePath("../noButton")
+focus_neighbor_bottom = NodePath("../noButton")
+focus_next = NodePath("../noButton")
+focus_previous = NodePath("../noButton")
+theme = ExtResource("6_hs40x")
+text = "MENU_LABEL_YEAH"
+
+[node name="noButton" type="Button" parent="MarginContainer/VBoxContainer/buttonPanel"]
+layout_mode = 2
+size_flags_horizontal = 5
+focus_neighbor_left = NodePath("../yesButton")
+focus_neighbor_top = NodePath("../yesButton")
+focus_neighbor_right = NodePath("../yesButton")
+focus_neighbor_bottom = NodePath("../yesButton")
+focus_next = NodePath("../yesButton")
+focus_previous = NodePath("../yesButton")
+theme = ExtResource("6_hs40x")
+text = "MENU_LABEL_NO"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ev4f6")
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/buttonPanel/yesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/buttonPanel/noButton" to="." method="_on_no_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

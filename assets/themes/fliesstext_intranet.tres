@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d257haldggbwj"]
+
+[ext_resource type="FontFile" uid="uid://f4tn4vbsiiyu" path="res://assets/fonts/DePixelKlein.ttf" id="1_lkpu5"]
+
+[resource]
+font = ExtResource("1_lkpu5")
+font_size = 12
+font_color = Color(0.0941176, 0.0941176, 0.0941176, 1)

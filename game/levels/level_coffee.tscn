@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1aaxcff0b7nw"]
+
+[ext_resource type="PackedScene" uid="uid://caqmnilwu43bs" path="res://game/levels/level_base.tscn" id="1_2o5o2"]
+[ext_resource type="PackedScene" uid="uid://dopmg8b6wbcv5" path="res://game/Bugs/bug_spawner.tscn" id="2_2gwgo"]
+[ext_resource type="PackedScene" uid="uid://caw18ogoys16i" path="res://game/hotspots/phone.tscn" id="3_qm0e1"]
+[ext_resource type="PackedScene" uid="uid://c4l0kg46dbt8y" path="res://game/hotspots/server.tscn" id="4_6joyy"]
+[ext_resource type="PackedScene" uid="uid://ut5nyvkd0cy5" path="res://game/hotspots/barrel.tscn" id="5_ra2r4"]
+[ext_resource type="PackedScene" uid="uid://iujomsncyenl" path="res://game/hotspots/coffeemaker.tscn" id="6_rar0q"]
+
+[node name="Level_5" instance=ExtResource("1_2o5o2")]
+level_number = 5
+duration = 180
+
+[node name="BugSpawner" parent="Room/Bugs" index="0"]
+position = Vector2(-200, -488)
+active = false
+interval_min = 8
+interval_max = 15
+
+[node name="BugSpawner2" parent="Room/Bugs" index="1" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("2_2gwgo")]
+position = Vector2(992, -528)
+active = false
+interval_min = 10
+interval_max = 15
+speed = 60.0
+waypointsNode = NodePath("../waypoints")
+exit = NodePath("../Exit")
+
+[node name="BugSpawner3" parent="Room/Bugs" index="2" node_paths=PackedStringArray("waypointsNode", "exit") instance=ExtResource("2_2gwgo")]
+position = Vector2(1016, -88)
+active = false
+interval_min = 10
+interval_max = 20
+speed = 70.0
+waypointsNode = NodePath("../waypoints")
+exit = NodePath("../Exit")
+
+[node name="Marker2D" type="Marker2D" parent="Room/Bugs/waypoints" index="0"]
+position = Vector2(198, -616)
+
+[node name="Marker2D2" type="Marker2D" parent="Room/Bugs/waypoints" index="1"]
+position = Vector2(-56, -80)
+
+[node name="Marker2D3" type="Marker2D" parent="Room/Bugs/waypoints" index="2"]
+position = Vector2(1328, -80)
+
+[node name="Marker2D4" type="Marker2D" parent="Room/Bugs/waypoints" index="3"]
+position = Vector2(1272, -608)
+
+[node name="Marker2D5" type="Marker2D" parent="Room/Bugs/waypoints" index="4"]
+position = Vector2(304, -80)
+
+[node name="Marker2D6" type="Marker2D" parent="Room/Bugs/waypoints" index="5"]
+position = Vector2(238, -80)
+
+[node name="Marker2D7" type="Marker2D" parent="Room/Bugs/waypoints" index="6"]
+position = Vector2(560, -608)
+
+[node name="phone" parent="Room/Hotspots" index="0" instance=ExtResource("3_qm0e1")]
+position = Vector2(176, -139)
+
+[node name="phone2" parent="Room/Hotspots" index="1" instance=ExtResource("3_qm0e1")]
+position = Vector2(1034, -557)
+
+[node name="Server" parent="Room/Hotspots" index="2" instance=ExtResource("4_6joyy")]
+position = Vector2(-47, -208)
+damage_after = 20
+damage_points = 10
+
+[node name="Server2" parent="Room/Hotspots" index="3" instance=ExtResource("4_6joyy")]
+position = Vector2(913, -144)
+damage_after = 20
+damage_points = 10
+
+[node name="Barrel" parent="Room/Hotspots" index="4" instance=ExtResource("5_ra2r4")]
+position = Vector2(1102, -416)
+
+[node name="Barrel2" parent="Room/Hotspots" index="5" instance=ExtResource("5_ra2r4")]
+position = Vector2(561, -392)
+
+[node name="Barrel3" parent="Room/Hotspots" index="6" instance=ExtResource("5_ra2r4")]
+position = Vector2(16, -392)
+
+[node name="coffeemaker" parent="Room/Hotspots" index="7" node_paths=PackedStringArray("actionArea", "player") instance=ExtResource("6_rar0q")]
+position = Vector2(624, -592)
+actionArea = NodePath("../../Klo/actionArea")
+player = NodePath("../../Player")
+timeout_after = Vector2i(4, 6)
+
+[node name="Player" parent="Room" index="4"]
+position = Vector2(688, -557)
+
+[node name="Label" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="0"]
+text = "Level 5"
+
+[node name="TitleLabel" parent="UI Overlay/Instructions/Panel/VBoxContainer/HBoxContainer" index="2"]
+text = "LEVEL_5_TITLE"

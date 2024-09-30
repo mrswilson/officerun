@@ -1,0 +1,169 @@
+STRING ID,en,de,fr,es,it
+LANGUAGE_CODE,enUS enGB,deDE deCH deAT,frFR,esES esAR esMX,itIT itCH
+LANGUAGE_EN,English,German,French,Spanish,Italian 
+LANGUAGE_DIRECTION,ltr,ltr,ltr,ltr,ltr
+,,,,,
+CONTEXT_COMPETITION_FIRST,First place,Erster Platz,Première place,Primer puesto,Primo posto
+CONTEXT_COMPETITION_PLACE_NOUN,Place,Platz,Place,Puesto,Posto
+CONTEXT_COMPETITION_SECOND,Second place,Zweiter Platz,Deuxième place,Segundo puesto,Secondo posto
+CONTEXT_COMPETITION_THIRD,Third place,Dritter Platz,Troisième place,Tercer puesto,Terzo posto
+CONTEXT_GAMBLING_DISCARD,Discard,Abbrechen,Défausser,Descartar,Scartare
+CONTEXT_GAMBLING_MAX,Max,Max,Max,Máx.,Max
+CONTEXT_GAMBLING_MIN,Min,Min,Min,Mín.,Min
+CONTEXT_ITEM_RANK_NOUN,Rank,Platz,Rang,Rango,Grado
+CREDITS_GAME,Game,Spiel,Jeu,Juego,Gioco
+CREDITS_GAME_DEVELOPMENT,Game development,Spielentwicklung,Développement de jeu,Desarrollo de juegos,Sviluppo del gioco
+CREDITS_GAME_DEVELOPER,Game developer,Spielentwickler,Développeur de jeu,Desarrollador de juegos,Sviluppatore del gioco
+CREDITS_DEVELOPED_BY,Developed by,Entwickelt von,Développé par,Desarrollado por,Sviluppato da
+CREDITS_COMPOSER,Composer,Komponist,Compositeur,Compositor,Compositore
+CREDITS_MUSICIAN,Musician,Musiker,Musicien,Músico,Musicista
+CREDITS_SPECIAL_THANKS,Special thanks,Besonderer Dank,Remerciements,Agradecimientos,Ringraziamenti speciali
+CREDITS_SPECIAL_THANKS_TO,Special thanks to,Besonderen Dank an,Remerciements à,Agradecimientos a,Ringraziamento speciale a
+CREDITS_FONT,Font,Schriftart,Police,Tipografía,Font
+CREDITS_FONT_PLURAL,Fonts,Schriftarten,Polices,Tipografías,Font
+CREDITS_SOUNDTRACK,Soundtrack,Soundtrack,Bande sonore,Banda sonora,Colonna sonora
+CREDITS_SFX,Sound Effects,Soundeffekte,Effets sonores,Efectos de sonido,Effetti sonori
+CREDITS_VFX,Visual Effects,Spezialeffekte,Effets visuels,Efectos visuales,Effetti visivi
+CREDITS_TESTER,Tester,Tester,Testeur,Probador de videojuegos,Tester
+CREDITS_LOCALIZATION,Localization,Lokalisierung,Localisation,Localización,Localizzazione
+CREDITS_TRANSLATION,Translation,Übersetzung,Traduction,Traducción,Traduzione
+CREDITS_POLYGLOT,Translated by the Polyglot Project.,Übersetzt von Polyglot Project.,Traduit par le Polyglot Projet.,Traducido por el proyecto Polyglot.,Tradotto dal Polyglot Project.
+ERROR_DEVICE_NOT_FOUND,No {0} detected.,{0} nicht erkannt.,Aucun {0} détecté.,No se detectó {0}.,Nessun {0} trovato.
+ERROR_GENERIC_ERRCODE,Error code:,Fehlercode:,Code d'erreur :,Código de error:,Codice errore:
+ERROR_GENERIC_TEXT,An error has occured.,Ein Fehler ist aufgetreten.,Une erreur s'est produite.,Ha ocurrido un error.,È stato riscontrato un errore.
+ERROR_GENERIC_INVALID_NAME,Invalid name.,Ungültiger Name.,Nom incorrect.,El nombre no es válido.,Nome non valido.
+ERROR_NETWORK_SERVER,Cannot connect to server.,Es konnte keine Verbindung zum Server hergestellt werden.,Impossible de se connecter au serveur.,No se pudo conectar con el servidor.,Impossibile connettersi al server.
+ERROR_SAVE_CORRUPTED,Save file corrupted.,Speicherstand beschädigt.,Fichier de sauvegarde corrompu.,Archivo de guardado corrupto.,Salvataggio corrotto.
+GAME_OBJECTIVE,Objective,Ziel,Objectif,Objetivo,Obiettivo
+GAME_OBJECTIVE_ASSIST,Assist,Hilfe,Aide,Asistencia,Assist
+GAME_OBJECTIVE_BONUS,Bonus,Bonus,Bonus,Bonificación,Bonus
+GAME_OBJECTIVE_CAPTURE,Capture,Fang,Capturer,Capturar,Catturare
+GAME_OBJECTIVE_COMPLETE,Complete,Vollständig,Complet,Completo,Completo
+GAME_OBJECTIVE_GAME_FINISHED,The End,Ende,Fin,Fin,Fine
+GAME_OBJECTIVE_GAMEOVER,Game over!,Spiel vorbei!,Game over !,Fin del juego,Fine partita
+GAME_OBJECTIVE_GAMEOVER_CAPS,GAME OVER!,SPIEL VORBEI!,GAME OVER !,FIN DEL JUEGO,FINE PARTITA!
+GAME_OBJECTIVE_HIGH_SCORE,High score,Höchstpunktzahl,Meilleur score,Puntuación máxima,Record di punti
+GAME_OBJECTIVE_INCOMPLETE,Incomplete,Unvollständig,Incomplet,Incompleto,Incompleto
+GAME_OBJECTIVE_SCORE,Score,Punktzahl,Score,Puntuación,Punteggio
+GAME_OBJECTIVE_TIME,Time,Zeit,Temps,Tiempo,Tempo
+GAME_OBJECTIVE_TIME_LEFT,Time left,Zeit übrig,Temps restant,Tiempo restante,Tempo rimanente
+GAME_STATUS_YOU_LOSE,You lose!,Verloren!,Perdu !,¡Pierdes!,Hai Perso!
+GAME_STATUS_YOU_LOST,You lost!,Du hast verloren!,Tu as perdu !,¡Perdiste!,Hai perso!
+GAME_STATUS_YOU_WIN,You win!,Gewonnen!,Gagné !,¡Ganas!,Vittoria!
+GAME_STATUS_YOU_WON,You won!,Du hast gewonnen!,Tu as gagné !,¡Ganaste!,Hai vinto!
+MENU_DIFFICULTY,Difficulty,Schwierigkeitsgrad,Difficulté,Dificultad,Difficoltà
+MENU_DIFFICULTY_EASY,Easy,Einfach,Facile,Fácil,Facile
+MENU_DIFFICULTY_HARD,Hard,Schwer,Difficile,Difícil,Difficile
+MENU_DIFFICULTY_IMPOSSIBLE,Impossible,Unmöglich,Impossible,Imposible,Impossibile
+MENU_DIFFICULTY_INSANE,Insane,Wahnsinn,Dément,Enfermizo,Folle
+MENU_DIFFICULTY_MEDIUM,Medium,Mittel,Moyen,Intermedio,Medio
+MENU_DIFFICULTY_VERY_EASY,Very Easy,Sehr einfach,Très facile,Muy fácil,Molto facile
+MENU_DIFFICULTY_VERY_HARD,Very Hard,Sehr schwer,Très difficile,Muy difícil,Molto difficile
+MENU_DIR_DOWN,Down,Unten,Bas,Abajo,Giù
+MENU_DIR_LEFT,Left,Links,Gauche,Izquierda,Sinistra
+MENU_DIR_RIGHT,Right,Rechts,Droite,Derecha,Destra
+MENU_DIR_UP,Up,Oben,Haut,Arriba,Su
+MENU_IO_LOAD,Load,Laden,Charger,Cargar,Carica
+MENU_IO_LOAD_GAME,Load Game,Spiel laden,Charger partie,Cargar juego,Carica partita
+MENU_IO_LOADING,Loading...,Lädt...,Chargement...,Cargando...,Caricamento...
+MENU_IO_PLEASE_WAIT,Please wait...,Bitte warten,Veuillez patienter...,Por favor espera...,Attendi...
+MENU_IO_RESET_SAVE_DATA,Reset save data?,Spielstand zurücksetzen?,Réinitialiser les données ?,¿Borrar los datos guardados?,Resettare dati salvati?
+MENU_IO_SAVE,Save,Speichern,Sauvegarder,Guardar,Salva
+MENU_IO_SAVE_DATA,Save data,Spiel speichern,Sauvegarder les données,Guardar partida,Salva dati
+MENU_IO_SAVE_GAME,Save Game,Spiel speichern,Sauvegarder partie,Guardar juego,Salva partita
+MENU_IO_SAVING,Saving...,Spiel wird gespeichert...,Sauvegarde en cours...,Guardando...,Salvataggio...
+MENU_LABEL_ALL,All,Alle,Tous,Todos,Tutti
+MENU_LABEL_AGE,Age,Alter,Âge,Edad,Età
+MENU_LABEL_ARE_YOU_REALLY_SURE,Are you really sure?,Bist du wirklich sicher?,Êtes-vous vraiment sûr ?,¿Estás totalmente seguro?,Sei davvero sicuro?
+MENU_LABEL_ARE_YOU_SURE,Are you sure?,Bist du sicher?,Êtes-vous certain ?,¿Estás seguro?,Sei sicuro?
+MENU_LABEL_BACK,Back,Zurück,Retour,Volver,Indietro
+MENU_LABEL_BACKGROUND_MUSIC,Background music,Hintergrundmusik,Volume du fond sonore,Música de fondo,Musica di sottofondo
+MENU_LABEL_CANCEL,Cancel,Abbrechen,Annuler,Cancelar,Cancella
+MENU_LABEL_CLOSE,Close,Schließen,Fermer,Cerrar,Chiudi
+MENU_LABEL_CONFIRM_BUTTON,Confirm,Bestätigen,Confirmer,Confirmar,Conferma
+MENU_LABEL_CONTINUE,Continue,Fortsetzen,Continuer,Continuar,Continua
+MENU_LABEL_CONTINUE_QUESTION,Continue?,Fortfahren?,Continuer ?,¿Continuar?,Continua?
+MENU_LABEL_CREDITS,Credits,Credits,Remerciements,Créditos,Crediti
+MENU_LABEL_DESKTOP,Exit to Desktop,Zurück zum Desktop,Retourner sur le bureau,Salir al escritorio,Torna al desktop
+MENU_LABEL_DESKTOP_QUESTION,Exit to Desktop?,Zum Desktop zurückkehren?,Retourner sur le bureau ?,¿Salir al escritorio?,Tornare al desktop?
+MENU_LABEL_DLC,DLC,DLC,DLC,DLC,DLC
+MENU_LABEL_DOWNLOAD,Download,Herunterladen,Télécharger,Descargar,Scarica
+MENU_LABEL_DOWNLOADABLE,Downloadable content,Inhalte zum Herunterladen,Contenu téléchargeable,Contenido descargable,Contenuto scaricabile
+MENU_LABEL_EXIT,Exit,Beenden,Sortir,Salir,Esci
+MENU_LABEL_EXIT_QUESTION,Exit?,Beenden?,Sortir ?,¿Salir?,Uscire?
+MENU_LABEL_EXTRAS,Extras,Extras,Extras,Extras,Extra
+MENU_LABEL_FRAMESPERSEC,FPS,FPS,IPS,FPS,FPS
+MENU_LABEL_GALLERY,Art gallery,Kunstgalerie,Galerie d'art,Galería de arte,Galleria d'arte
+MENU_LABEL_GOODBYE,Goodbye!,Auf Wiedersehen!,Au revoir !,¡Adiós!,Arrivederci!
+MENU_LABEL_GRAPHICS,Graphics,Grafik,Graphismes,Gráficos,Grafica
+MENU_LABEL_IAP,In-app purchase,In-App-Verkäufe,Achats intégré,Compra integrada,Acquisti In-app
+MENU_LABEL_LANGUAGE,Language,Sprache,Langue,Idioma,Lingua
+MENU_LABEL_LEVEL,Level,Level,Niveau,Nivel,Livello
+MENU_LABEL_MAIL,Mail,Mailbox,Mail,Correo,Posta
+MENU_LABEL_MAINMENU,Main Menu,Hauptmenü,Menu principal,Menú principal,Menu principale
+MENU_LABEL_MORE,More,Mehr,Plus,Más,Altro
+MENU_LABEL_MUSIC,Music,Musik,Musique,Música,Musica
+MENU_LABEL_MUSIC_PLAYER,Music Player,Musikspieler,Lecteur de musique,Reproductor de música,Lettore musicale
+MENU_LABEL_NEW_GAME,New Game,Neues Spiel,Nouvelle partie,Juego nuevo,Nuova partita
+MENU_LABEL_NEXT,Next,Weiter,Suivant,Siguiente,Avanti
+MENU_LABEL_NEXT_TRACK,Next track,Nächster Titel,Piste suivante,Siguiente canción,Traccia successiva
+MENU_LABEL_NO,No,Nein,Non,No,No
+MENU_LABEL_NO_CAPS,NO,NEIN,NON,NO,NO
+MENU_LABEL_NOPE,Nope,Nö,Nan,Nah,No
+MENU_LABEL_OK,OK,OK,OK,Ok,Ok
+MENU_LABEL_PAUSE,Pause,Pause,Pause,Pausa,Pausa
+MENU_LABEL_PAUSED,Paused,Pausiert,En pause,Pausado,In pausa
+MENU_LABEL_PLAY,Play,Spielen,Jouer,Jugar,Gioca
+MENU_LABEL_PLAY_AGAIN,Play again,Noch einmal spielen,Rejouer,Jugar otra vez,Gioca di nuovo
+MENU_LABEL_PRESS_ANYKEY,Press any key,Drücke eine beliebige Taste,Appuyez sur une touche,Pulsa cualquier tecla,Premi un tasto
+MENU_LABEL_PRESS_ANYKEY_CONTINUE,Press any key to continue,Drücke eine beliebige Taste um fortzufahren,Appuyez sur une touche pour continuer,Pulsa cualquier tecla para continuar,Premi un tasto per continuare
+MENU_LABEL_PRESS_START,Press Start,Start drücken,Appuyez sur Start,Pulsa Start,Premi Start
+MENU_LABEL_PRESS_START_CONTINUE,Press Start to continue,Drücke Start um fortzufahren,Appuyez sur Start pour continuer,Pulsa Start para continuar,Premi Start per continuare
+MENU_LABEL_PREVIOUS,Previous,Zurück,Précédent,Anterior,Indietro
+MENU_LABEL_PREVIOUS_TRACK,Previous track,Vorheriger Titel,Piste précedente,Canción anterior,Traccia precedente
+MENU_LABEL_PRICE,Price,Preis,Prix,Precio,Prezzo
+MENU_LABEL_PRICE_FREE,Free,Kostenlos,Gratuit,Gratis,Gratis
+MENU_LABEL_PURCHASE,Purchase,Kaufen,Acheter,Comprar,Compra
+MENU_LABEL_QUIT,Quit,Beenden,Quitter,Cerrar,Esci
+MENU_LABEL_QUIT_CONFIRM,Are you sure you want to quit?,Wirklich beenden?,Êtes-vous certain de vouloir quitter ?,¿Seguro que quieres salir?,Sicuro di voler uscire?
+MENU_LABEL_QUIT_QUESTION,Quit?,Spiel beenden?,Quitter ?,¿Salir?,Uscire?
+MENU_LABEL_REPLAY,Replay,Replay,Revoir,Repetir,Rigioca
+MENU_LABEL_RETURN,Return,Zurück,Retour,Volver,Ritorna
+MENU_LABEL_RETURN_MAIN,Return to Main Menu,Zurück zum Hauptmenü,Retourner au menu principal,Volver al menú principal,Ritorna al menù principale
+MENU_LABEL_RETURN_MAIN_QUESTION,Return to Main Menu?,Zum Hauptmenü zurückkehren?,Retourner au menu principal ?,¿Volver al menú principal?,Ritornare al menù principale?
+MENU_LABEL_SHARE,Share,Teilen,Partager,Compartir,Condividi
+MENU_LABEL_SKIP,Skip,Replay überspringen,Passer,Saltar,Salta
+MENU_LABEL_SOUND,Sound,Audio,Son,Sonido,Audio
+MENU_LABEL_THANK_YOU,Thank you!,Danke!,Merci !,¡Gracias!,Grazie!
+MENU_LABEL_UNLOCK,Unlock,Freischalten,Déverrouiller,Desbloquear,Sblocca
+MENU_LABEL_VIDEO,Video,Video,Vidéo,Vídeo,Video
+MENU_LABEL_VOICES,Voices,Stimmen,Voix,Voces,Voci
+MENU_LABEL_WARNING,Warning,Warnung,Avertissement,Aviso,Attenzione
+MENU_LABEL_WELCOME,Welcome,Willkommen,Bienvenue,Bienvenido,Benvenuto
+MENU_LABEL_WORLD,World,Welt,Monde,Mundo,Mondo
+MENU_LABEL_YEAH,Yeah,Jo,Ouais,Seh,Si
+MENU_LABEL_YES,Yes,Ja,Oui,Sí,Sì
+MENU_LABEL_YES_CAPS,YES,JA,OUI,SÍ,SI
+MENU_LANGUAGE_DIRECTION,ltr,ltr,ltr,ltr,ltr
+MENU_LANGUAGE_THIS,English,Deutsch,Français,Español,Italiano
+MENU_LANGUAGE_THIS_EN,English,German,French,Spanish,Italian 
+MENU_MODE_CHALLENGE,Challenge,Herausforderung,Défi,Desafío,Sfida
+MENU_MODE_CHALLENGE_MODE,Challenge mode,Herausforderungsmodus,Mode défi,Modo desafío,Modalità sfida
+MENU_MODE_HELP,Help,Hilfe,Aide,Ayuda,Aiuto
+MENU_MODE_INSTRUCTIONS,Instructions,Anleitung,Instructions,Instrucciones,Istruzioni
+MENU_MODE_TRAINING,Training,Training,Entrainement,Entrenamiento,Addestramento
+MENU_MODE_TUTORIAL,Tutorial,Tutorial,Didacticiel,Tutorial,Tutorial
+MENU_NAME,Name,Name,Nom,Nombre,Nome
+MENU_NAME_FIRST,First Name,Vorname,Prénom,Nombre,Nome
+MENU_NAME_LAST,Last Name,Nachname,Nom de famille,Apellidos,Cognome
+MENU_OPTIONS,Options,Optionen,Options,Opciones,Opzioni
+MENU_OPTIONS_CONTROLS,Controls,Tastenbelegung,Contrôles,Controles,Comandi
+MENU_OPTIONS_DIFFICULTY,Difficulty Options,Schwierigkeitseinstellungen,Options de difficulté,Opciones de dificultad,Opzioni per la difficoltà
+MENU_OPTIONS_DISPLAY,Display,Anzeige,Écran,Pantalla,Display
+MENU_OPTIONS_GAMEPLAY,Gameplay Options,Gameplay-Optionen,Options de jeu,Opciones de juego,Opzioni di gioco
+MENU_OPTIONS_GRAPHICS,Graphics Options,Grafikeinstellungen,Options graphiques,Ajustes de vídeo,Opzioni grafiche
+MENU_OPTIONS_HUD,HUD,Anzeige,HUD,HUD,HUD
+MENU_OPTIONS_MUSIC_VOLUME,Music volume,Musiklautstärke,Volume de la musique,Volumen de la música,Volume della musica
+MENU_OPTIONS_SFX_VOLUME,Sound effect volume,Soundeffektlautstärke,Volume des effets sonores,Volumen de los efectos de sonido,Volume degli effetti sonori
+MENU_OPTIONS_SOUND,Sound Options,Audioeinstellungen,Options sonores,Opciones de sonido,Opzioni audio
+MENU_OPTIONS_SOUND_VOLUME,Volume,Lautstärke,Volume,Volumen,Volume

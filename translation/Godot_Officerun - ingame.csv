@@ -1,0 +1,27 @@
+STRING ID,en,de,fr,es,it
+HUD_REQUESTS,Requests,Anfragen,,,
+LEVEL_1_TITLE,The internship,Der Praktikant,,,
+LEVEL_1_INSTRUCTION_1,Press E ti fix a bug.,"Drücke E, um einen Bug zu fixen.",,,
+LEVEL_1_INSTRUCTION_2,"""When 5 Bugs escaped: game over!""",Wenn 5 Bugs entkommen: Game Over,,,
+LEVEL_2_TITLE,Server down!,Serverausfall!,,,
+LEVEL_2_INSTRUCTION,"Press E to reboot.
+If it's down for too long, you'll lose points","Drücke E zum Neustart.. 
+Dauert der Ausfall zu lange, gibt es Punktabzug.",,,
+LEVEL_3_TITLE,Support,Support,,,
+LEVEL_3_INSTRUCTION,"Answer phone calls.
+You will receive a request for each telephone call.
+After 5 requests you have to go to a meeting.
+Don't let it ring for too long!","Nimm Anrufe an.
+Für jedes Telefonat gibt es eine Anfrage. 
+Nach 5 Anfragen musst Du in die Besprechung.
+Lass es nicht zu lange klingeln!",,,
+LEVEL_4_TITLE,The Barrel,Das Fass,,,
+LEVEL_4_INSTRUCTION,Do you really want to open a whole new can of bugs?,"Überleg Dir gut, ob Du ein Fass aufmachen willst.",,,
+LEVEL_5_TITLE,Intranet,Das Intranet,,,
+LEVEL_5_INSTRUCTION,Read intranet articles to gain points. Of course this will cost you some time.,"Lies Intranetbeiträge, um mehr Punkte zu bekommen. Natürlich kostet das Zeit.",,,
+MESSAGE_BARREL,Do you really want to open a whole new can of bugs? (E),Willst Du wirklich ein Fass aufmachen? (E),,,
+,,,,,
+ALARM_PHONE,incoming phone call,Telefon,,,
+ALARM_SERVER,Server down,Serverausfall,,,
+,,,,,
+IN_NEW_ENTRY,new intranet article,Neuer Intranetbeitrag,,,

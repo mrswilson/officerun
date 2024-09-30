@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cya7do4mjknl1"]
+
+[ext_resource type="Script" path="res://game/logic/interaction/interaction_manager.gd" id="1_lmue1"]
+[ext_resource type="FontFile" uid="uid://f1ld5k0sv4sn" path="res://assets/fonts/Blocky5x7.ttf" id="1_nm52b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5y0x"]
+font = ExtResource("1_nm52b")
+font_size = 18
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_lmue1")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_right = 53.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "[p] to interact"
+label_settings = SubResource("LabelSettings_h5y0x")
+horizontal_alignment = 1
+vertical_alignment = 1

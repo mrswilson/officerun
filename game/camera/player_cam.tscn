@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6bilwwar8klj"]
+
+[ext_resource type="Script" path="res://game/camera/player_cam.gd" id="1_nm0hs"]
+
+[node name="PlayerCam" type="Camera2D"]
+script = ExtResource("1_nm0hs")
+
+[node name="ShakeTimer" type="Timer" parent="."]

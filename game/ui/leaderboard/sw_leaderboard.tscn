@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb8c2d1ve65y"]
+
+[ext_resource type="Script" path="res://game/ui/leaderboard/sw_leaderboard.gd" id="1_4chm8"]
+[ext_resource type="Texture2D" uid="uid://bhqd8o0y4xrd7" path="res://assets/backgrounds/Brown.png" id="2_0xafx"]
+[ext_resource type="Theme" uid="uid://k1t7meq0f8h4" path="res://assets/themes/officerun.tres" id="2_6s5o3"]
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="3_v5jyb"]
+[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="4_86fr2"]
+
+[sub_resource type="Theme" id="Theme_j1gah"]
+
+[node name="SW_Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4chm8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0xafx")
+stretch_mode = 1
+
+[node name="OldBoard" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+
+[node name="HighScores" type="TextureRect" parent="OldBoard"]
+layout_mode = 2
+
+[node name="Board" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -78.5
+offset_right = 109.5
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_6s5o3")
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="TitleContainer" type="CenterContainer" parent="Board"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Board/TitleContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Board/TitleContainer"]
+layout_mode = 2
+text = "Highscores"
+label_settings = ExtResource("3_v5jyb")
+horizontal_alignment = 1
+
+[node name="MessageContainer" type="CenterContainer" parent="Board"]
+visible = false
+layout_mode = 2
+
+[node name="TextMessage" type="Label" parent="Board/MessageContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Loading scores..."
+
+[node name="HighScores" type="CenterContainer" parent="Board"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_j1gah")
+
+[node name="ScoreItemContainer" type="VBoxContainer" parent="Board/HighScores"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="CloseButtonContainer" type="CenterContainer" parent="Board"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CloseButton" parent="Board/CloseButtonContainer" instance=ExtResource("4_86fr2")]
+visible = false
+custom_minimum_size = Vector2(219, 30)
+layout_mode = 2
+text = "MENU_LABEL_CLOSE"
+
+[node name="CloseButton2" type="Button" parent="Board/CloseButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_6s5o3")
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+text = "MENU_LABEL_CLOSE"
+
+[connection signal="pressed" from="Board/CloseButtonContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Board/CloseButtonContainer/CloseButton2" to="." method="_on_close_button_2_pressed"]
+[connection signal="visibility_changed" from="Board/CloseButtonContainer/CloseButton2" to="." method="_on_close_button_2_visibility_changed"]

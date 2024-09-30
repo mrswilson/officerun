@@ -1,0 +1,302 @@
+[gd_scene load_steps=23 format=3 uid="uid://cxw7gtg2gsvnr"]
+
+[ext_resource type="LabelSettings" uid="uid://dps0s4yp4npgy" path="res://assets/themes/font_title.tres" id="1_cjkjj"]
+[ext_resource type="Script" path="res://game/hud/hud.gd" id="1_jbldc"]
+[ext_resource type="FontFile" uid="uid://bt6dnw25njfrt" path="res://assets/fonts/retro-pixel-petty-5h.ttf" id="2_n6avh"]
+[ext_resource type="LabelSettings" uid="uid://ba0vhk5rd6x5r" path="res://assets/themes/font_score.tres" id="3_6te7x"]
+[ext_resource type="FontFile" uid="uid://dfcu42nqdla7t" path="res://assets/fonts/retro-pixel-petty-5x5.ttf" id="4_7b0pn"]
+[ext_resource type="Texture2D" uid="uid://c03nkkqwh4lbx" path="res://assets/ui/escalation_singles_32.png" id="6_0o7mw"]
+[ext_resource type="Texture2D" uid="uid://bx0j2ev00mkvp" path="res://assets/ui/escalation_singles_33.png" id="6_j76h1"]
+[ext_resource type="FontFile" uid="uid://cvtgr3b6q7rqy" path="res://assets/fonts/ThaleahFat.ttf" id="7_ciwvw"]
+[ext_resource type="Texture2D" uid="uid://ytye77r7pjd4" path="res://assets/ui/anfragen4.png" id="7_dhrmx"]
+[ext_resource type="Texture2D" uid="uid://dm3haciwch66b" path="res://assets/ui/anfragen1.png" id="8_25xbg"]
+[ext_resource type="PackedScene" uid="uid://d3h3rtvk7m8qh" path="res://game/hud/icon_progress.tscn" id="8_xrjq0"]
+[ext_resource type="PackedScene" uid="uid://dd60ppbeeyeqe" path="res://game/hud/itemcounter/item_counter.tscn" id="9_4g2pn"]
+[ext_resource type="Texture2D" uid="uid://bvesasw5g2ash" path="res://assets/ui/icon_klo.png" id="10_5vv0u"]
+[ext_resource type="PackedScene" uid="uid://y3s3c4okyua5" path="res://game/hud/itemcounter/vb_counter.tscn" id="10_d06er"]
+[ext_resource type="Texture2D" uid="uid://df641qym650g2" path="res://assets/ui/icon_coffee.png" id="10_v4iia"]
+[ext_resource type="LabelSettings" uid="uid://bjjwvp1ruslmy" path="res://assets/themes/instructions.tres" id="12_mvrdl"]
+[ext_resource type="PackedScene" uid="uid://cjg2tvyy8v803" path="res://game/hud/alarm_counter.tscn" id="13_g7p6a"]
+[ext_resource type="PackedScene" uid="uid://cyf2mxfijm6wt" path="res://game/hud/intranet_counter.tscn" id="14_5t105"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7yn4"]
+font = ExtResource("2_n6avh")
+font_size = 10
+font_color = Color(0.811765, 0.596078, 0.0862745, 1)
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shadow_size = 0
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_17axk"]
+font = ExtResource("4_7b0pn")
+font_size = 10
+font_color = Color(0.952941, 0.952941, 0.952941, 1)
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shadow_size = 4
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u7kt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vq8or"]
+font = ExtResource("7_ciwvw")
+font_size = 24
+font_color = Color(0.952941, 0.952941, 0.952941, 1)
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shadow_size = 4
+shadow_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+shadow_offset = Vector2(4, 4)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jbldc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="top" type="ColorRect" parent="VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.898039)
+
+[node name="MC" type="MarginContainer" parent="VBoxContainer/top"]
+layout_mode = 2
+offset_right = 512.0
+offset_bottom = 37.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 0
+
+[node name="VB" type="VBoxContainer" parent="VBoxContainer/top/MC"]
+layout_mode = 2
+
+[node name="HB" type="HBoxContainer" parent="VBoxContainer/top/MC/VB"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/top/MC/VB/HB"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="highscoreLabel" type="Label" parent="VBoxContainer/top/MC/VB/HB/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "TOP: 987"
+label_settings = SubResource("LabelSettings_v7yn4")
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/top/MC/VB/HB/VBoxContainer"]
+layout_mode = 2
+text = "SCORE: 000"
+label_settings = ExtResource("3_6te7x")
+
+[node name="Spacer2" type="Panel" parent="VBoxContainer/top/MC/VB/HB"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/top/MC/VB/HB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/top/MC/VB/HB/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Spacer3" type="Panel" parent="VBoxContainer/top/MC/VB/HB"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer/top/MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00:00"
+label_settings = SubResource("LabelSettings_17axk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Panel" parent="VBoxContainer/top/MC/VB/HB"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="BoxContainer" parent="VBoxContainer/top/MC/VB/HB"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="EscalationCounter" parent="VBoxContainer/top/MC/VB/HB/VBoxContainer2" instance=ExtResource("9_4g2pn")]
+layout_mode = 2
+image_inactive = ExtResource("6_j76h1")
+image_active = ExtResource("6_0o7mw")
+
+[node name="VBCounter" parent="VBoxContainer/top/MC/VB/HB/VBoxContainer2" instance=ExtResource("10_d06er")]
+layout_mode = 2
+image_inactive = ExtResource("7_dhrmx")
+image_active = ExtResource("8_25xbg")
+title = "HUD_REQUESTS"
+
+[node name="progressbars" type="FlowContainer" parent="VBoxContainer/top/MC/VB"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 2
+
+[node name="pb_kaffee" parent="VBoxContainer/top/MC/VB/progressbars" instance=ExtResource("8_xrjq0")]
+visible = false
+custom_minimum_size = Vector2(130, 8)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+icon_image = ExtResource("10_v4iia")
+alarm_image = ExtResource("10_5vv0u")
+count_down = true
+
+[node name="IconProgress2" parent="VBoxContainer/top/MC/VB/progressbars" instance=ExtResource("8_xrjq0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="IconProgress3" parent="VBoxContainer/top/MC/VB/progressbars" instance=ExtResource("8_xrjq0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/top/MC/VB"]
+layout_mode = 2
+
+[node name="AlarmCounterList" type="VBoxContainer" parent="VBoxContainer/top/MC/VB/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="AlarmCounter" parent="VBoxContainer/top/MC/VB/HBoxContainer/AlarmCounterList" instance=ExtResource("13_g7p6a")]
+layout_mode = 2
+
+[node name="IntranetCounter" parent="VBoxContainer/top/MC/VB/HBoxContainer" instance=ExtResource("14_5t105")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+
+[node name="InfoLabelBar" type="ColorRect" parent="VBoxContainer"]
+visible = false
+material = SubResource("ShaderMaterial_3u7kt")
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+color = Color(0.811765, 0.596078, 0.0862745, 1)
+
+[node name="InfoLabel" type="Label" parent="VBoxContainer/InfoLabelBar"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 4.0
+offset_right = 500.0
+offset_bottom = 20.0
+text = "Das ist eine Info"
+label_settings = ExtResource("12_mvrdl")
+
+[node name="bottom" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.0823529, 0.0823529, 0.0823529, 0.572549)
+
+[node name="MarginContainer" type="MarginContainer" parent="bottom"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
+
+[node name="Label" type="Label" parent="bottom/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "press E to fix anything"
+label_settings = SubResource("LabelSettings_vq8or")
+vertical_alignment = 2
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 0.572549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -74.5
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/VBoxContainer"]
+layout_mode = 2
+
+[node name="VB_GameOver" type="VBoxContainer" parent="Overlay/VBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label_GameOver" type="Label" parent="Overlay/VBoxContainer/VBoxContainer/VB_GameOver"]
+layout_mode = 2
+text = "Game Over"
+label_settings = ExtResource("1_cjkjj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VB_Level_complete" type="VBoxContainer" parent="Overlay/VBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label_GameOver" type="Label" parent="Overlay/VBoxContainer/VBoxContainer/VB_Level_complete"]
+layout_mode = 2
+text = "Level Completed"
+label_settings = ExtResource("1_cjkjj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_press_key" type="Label" parent="Overlay/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "MENU_LABEL_PRESS_ANYKEY_CONTINUE"
+label_settings = ExtResource("3_6te7x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hudTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="hudTimer" to="." method="_on_hud_timer_timeout"]

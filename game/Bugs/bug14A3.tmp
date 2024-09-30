@@ -1,0 +1,237 @@
+[gd_scene load_steps=18 format=3 uid="uid://ds0aweury24fe"]
+
+[ext_resource type="Script" path="res://game/Bugs/bug.gd" id="1_4wryk"]
+[ext_resource type="Texture2D" uid="uid://d7ixgc2u3gbg" path="res://assets/bug/8 - Roach_Running (32 x 32).png" id="1_8t0ci"]
+[ext_resource type="Texture2D" uid="uid://c7srbl3xuvjji" path="res://assets/ui/circle_42_weiss.png" id="2_upb82"]
+[ext_resource type="LabelSettings" uid="uid://ba0vhk5rd6x5r" path="res://assets/font_score.tres" id="3_6rix5"]
+[ext_resource type="PackedScene" uid="uid://ciq23guq02vxj" path="res://game/logic/interaction/interaction_area.tscn" id="3_q2ytp"]
+
+[sub_resource type="Animation" id="Animation_fdbke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vsrne"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.521569, 0.772549, 0), Color(0, 0.521569, 0.772549, 0.533333), Color(0, 0.521569, 0.772549, 0.533333), Color(0, 0.521569, 0.772549, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5e46"]
+_data = {
+"RESET": SubResource("Animation_fdbke"),
+"blink": SubResource("Animation_vsrne")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i42c6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wm1ix"]
+radius = 23.0
+
+[sub_resource type="Animation" id="Animation_kqrd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("roach:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8o5q7"]
+resource_name = "run"
+length = 0.3
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("roach:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kh6rg"]
+_data = {
+"RESET": SubResource("Animation_kqrd4"),
+"run": SubResource("Animation_8o5q7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hev42"]
+radius = 17.5
+
+[sub_resource type="Animation" id="Animation_d66nj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../labelNode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../labelNode:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n7aoa"]
+resource_name = "popup"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../labelNode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 2, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../labelNode:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h0khw"]
+_data = {
+"RESET": SubResource("Animation_d66nj"),
+"popup": SubResource("Animation_n7aoa")
+}
+
+[node name="Bug" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_4wryk")
+
+[node name="Interaction" type="Node2D" parent="."]
+visible = false
+
+[node name="circle_animation" type="AnimationPlayer" parent="Interaction"]
+libraries = {
+"": SubResource("AnimationLibrary_c5e46")
+}
+
+[node name="circle" type="Sprite2D" parent="Interaction"]
+material = SubResource("ShaderMaterial_i42c6")
+position = Vector2(0, -9)
+texture = ExtResource("2_upb82")
+
+[node name="InteractionArea" parent="Interaction" node_paths=PackedStringArray("markerShape") instance=ExtResource("3_q2ytp")]
+collision_layer = 4
+action_name = "pickup"
+markerShape = NodePath("../circle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction/InteractionArea"]
+z_index = 1
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_wm1ix")
+
+[node name="roach" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -16)
+texture = ExtResource("1_8t0ci")
+hframes = 2
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="Navigation"]
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+debug_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kh6rg")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -9)
+shape = SubResource("CircleShape2D_hev42")
+
+[node name="labelNode" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(0, -61)
+
+[node name="pointsLabel" type="Label" parent="labelNode"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.5
+offset_right = 20.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "20"
+label_settings = ExtResource("3_6rix5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="labelAnimation" type="AnimationPlayer" parent="labelNode"]
+root_node = NodePath("../../roach")
+libraries = {
+"": SubResource("AnimationLibrary_h0khw")
+}
+
+[connection signal="navigation_finished" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
